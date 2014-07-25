@@ -1,0 +1,60 @@
+/*
+Theme Name: Fancy
+Theme URI: http://lordfancypants.com
+Description: A custom Wordpress portfolio site for Lord Fancy Pants
+Author: Matthew Mesaros
+Version: 1.0
+
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import 'reset';
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+
+.stuck {
+    position: fixed;
+}
+
+article {
+    @extend %clearfix;
+    margin-top: 1px;
+    position: relative;
+	height: 100%;
+    width: 100%;
+}
+
+figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+figcaption {
+
+}
+main {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+article header {
+    background: hsl(0, 0%, 96%);
+    float: left;
+    padding: ms(3);
+    width: 26%; height: 100%;
+    h3 {
+        color: hsl(19, 84%, 78%);
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+}
+
+article section {
+	background: #FFF;
+    float: left;
+    overflow: visible;
+	padding: ms(3);
+    width: 74%; height: 100%;
+}
