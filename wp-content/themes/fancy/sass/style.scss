@@ -12,6 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import 'reset';
 @import 'bourbon/bourbon';
 @import 'neat/neat';
+@import 'superslides';
 
 .stitching {
     @include calc(height, '100% - 40px');
@@ -30,7 +31,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     &::after { bottom: 0; }
 }
 
-section.head {
+div.head {
     background: url(images/classy_fabric.png);
     width: 100%; height: 360px;
     header {
@@ -77,6 +78,66 @@ nav {
     }
 }
 
+section {
+    padding: golden-ratio(18px, 3) 0;
+    .wrapper {
+        @include outer-container;
+        article {
+            @include span-columns(6);
+            p {
+                font-size: 18px;
+                line-height: 1.5;
+                margin-bottom: golden-ratio(18px, 1);
+            }
+        }
+        aside {
+            @include span-columns(6);
+            position: relative;
+        }
+    }
+}
+
+.abstract {
+    background: url(images/blu_stripes.png);
+    .wrapper {
+        article {
+            p {
+                color: #B92356;
+                font-size: 24px;
+            }
+        }
+    }
+    aside {
+        height: 600px;
+        &::before, &::after {
+            background: url(images/frame.gif);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            content: "";
+            position: absolute;
+            left: -69px;
+            width: 126%; height: 153px;
+            z-index: 101;
+        }
+        &::before { top: -70px; }
+        &::after {
+            bottom: -90px;
+            -moz-transform: scaleY(-1);
+            -o-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+        }
+    }
+}
+
+
+.buythebook {
+    background: url(images/classy_fabric.png);
+    color: #FFF;
+}
+
 article {
     @extend %clearfix;
     margin-top: 1px;
@@ -85,23 +146,3 @@ article {
     width: 100%;
 }
 
-main {
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-article header {
-    background: hsl(0, 0%, 96%);
-    float: left;
-    padding: ms(3);
-    width: 26%; height: 100%;
-}
-
-article section {
-	background: #FFF;
-    float: left;
-    overflow: visible;
-	padding: ms(3);
-    width: 74%; height: 100%;
-}

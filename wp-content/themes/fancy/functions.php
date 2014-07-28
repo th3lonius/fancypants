@@ -25,6 +25,17 @@
  * @since Twenty Fourteen 1.0
  */
 
+add_theme_support( 'post-thumbnails' ); 
+
+function theme_js() {
+    wp_register_script( 'main', get_template_directory_uri() . '/js/functions.js', array('jquery'), '', true );
+    wp_register_script( 'superslides', get_template_directory_uri() . '/js/superslides.min.js', array('jquery'), '', true );
+    wp_enqueue_script( 'main' );
+    wp_enqueue_script( 'superslides' );
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_js');
+
 /**
  * Set up the content width value based on the theme's design.
  *
@@ -117,17 +128,7 @@ function twentyfourteen_setup() {
 endif; // twentyfourteen_setup
 add_action( 'after_setup_theme', 'twentyfourteen_setup' );
 
-/**
- * Adjust content_width value for image attachment template.
- *
- * @since Twenty Fourteen 1.0
- */
-function twentyfourteen_content_width() {
-	if ( is_attachment() && wp_attachment_is_image() ) {
-		$GLOBALS['content_width'] = 810;
-	}
-}
-add_action( 'template_redirect', 'twentyfourteen_content_width' );
+
 
 /**
  * Getter function for Featured Content Plugin.
@@ -240,10 +241,6 @@ function twentyfourteen_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	if ( is_singular() && wp_attachment_is_image() ) {
-		wp_enqueue_script( 'twentyfourteen-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20130402' );
-	}
-
 	if ( is_active_sidebar( 'sidebar-3' ) ) {
 		wp_enqueue_script( 'jquery-masonry' );
 	}
@@ -270,72 +267,72 @@ function twentyfourteen_admin_fonts() {
 }
 add_action( 'admin_print_scripts-appearance_page_custom-header', 'twentyfourteen_admin_fonts' );
 
-if ( ! function_exists( 'twentyfourteen_the_attached_image' ) ) :
-/**
- * Print the attached image with a link to the next attached image.
- *
- * @since Twenty Fourteen 1.0
- */
-function twentyfourteen_the_attached_image() {
-	$post                = get_post();
-	/**
-	 * Filter the default Twenty Fourteen attachment size.
-	 *
-	 * @since Twenty Fourteen 1.0
-	 *
-	 * @param array $dimensions {
-	 *     An array of height and width dimensions.
-	 *
-	 *     @type int $height Height of the image in pixels. Default 810.
-	 *     @type int $width  Width of the image in pixels. Default 810.
-	 * }
-	 */
-	$attachment_size     = apply_filters( 'twentyfourteen_attachment_size', array( 810, 810 ) );
-	$next_attachment_url = wp_get_attachment_url();
-
-	/*
-	 * Grab the IDs of all the image attachments in a gallery so we can get the URL
-	 * of the next adjacent image in a gallery, or the first image (if we're
-	 * looking at the last image in a gallery), or, in a gallery of one, just the
-	 * link to that image file.
-	 */
-	$attachment_ids = get_posts( array(
-		'post_parent'    => $post->post_parent,
-		'fields'         => 'ids',
-		'numberposts'    => -1,
-		'post_status'    => 'inherit',
-		'post_type'      => 'attachment',
-		'post_mime_type' => 'image',
-		'order'          => 'ASC',
-		'orderby'        => 'menu_order ID',
-	) );
-
-	// If there is more than 1 attachment in a gallery...
-	if ( count( $attachment_ids ) > 1 ) {
-		foreach ( $attachment_ids as $attachment_id ) {
-			if ( $attachment_id == $post->ID ) {
-				$next_id = current( $attachment_ids );
-				break;
-			}
-		}
-
-		// get the URL of the next image attachment...
-		if ( $next_id ) {
-			$next_attachment_url = get_attachment_link( $next_id );
-		}
-
-		// or get the URL of the first image attachment.
-		else {
-			$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
-		}
-	}
-
-	printf( '<a href="%1$s" rel="attachment">%2$s</a>',
-		esc_url( $next_attachment_url ),
-		wp_get_attachment_image( $post->ID, $attachment_size )
-	);
-}
-endif;
+//if ( ! function_exists( 'twentyfourteen_the_attached_image' ) ) :
+///**
+// * Print the attached image with a link to the next attached image.
+// *
+// * @since Twenty Fourteen 1.0
+// */
+//function twentyfourteen_the_attached_image() {
+//	$post                = get_post();
+//	/**
+//	 * Filter the default Twenty Fourteen attachment size.
+//	 *
+//	 * @since Twenty Fourteen 1.0
+//	 *
+//	 * @param array $dimensions {
+//	 *     An array of height and width dimensions.
+//	 *
+//	 *     @type int $height Height of the image in pixels. Default 810.
+//	 *     @type int $width  Width of the image in pixels. Default 810.
+//	 * }
+//	 */
+//	$attachment_size     = apply_filters( 'twentyfourteen_attachment_size', array( 810, 810 ) );
+//	$next_attachment_url = wp_get_attachment_url();
+//
+//	/*
+//	 * Grab the IDs of all the image attachments in a gallery so we can get the URL
+//	 * of the next adjacent image in a gallery, or the first image (if we're
+//	 * looking at the last image in a gallery), or, in a gallery of one, just the
+//	 * link to that image file.
+//	 */
+//	$attachment_ids = get_posts( array(
+//		'post_parent'    => $post->post_parent,
+//		'fields'         => 'ids',
+//		'numberposts'    => -1,
+//		'post_status'    => 'inherit',
+//		'post_type'      => 'attachment',
+//		'post_mime_type' => 'image',
+//		'order'          => 'ASC',
+//		'orderby'        => 'menu_order ID',
+//	) );
+//
+//	// If there is more than 1 attachment in a gallery...
+//	if ( count( $attachment_ids ) > 1 ) {
+//		foreach ( $attachment_ids as $attachment_id ) {
+//			if ( $attachment_id == $post->ID ) {
+//				$next_id = current( $attachment_ids );
+//				break;
+//			}
+//		}
+//
+//		// get the URL of the next image attachment...
+//		if ( $next_id ) {
+//			$next_attachment_url = get_attachment_link( $next_id );
+//		}
+//
+//		// or get the URL of the first image attachment.
+//		else {
+//			$next_attachment_url = get_attachment_link( array_shift( $attachment_ids ) );
+//		}
+//	}
+//
+//	printf( '<a href="%1$s" rel="attachment">%2$s</a>',
+//		esc_url( $next_attachment_url ),
+//		wp_get_attachment_image( $post->ID, $attachment_size )
+//	);
+//}
+//endif;
 
 if ( ! function_exists( 'twentyfourteen_list_authors' ) ) :
 /**
