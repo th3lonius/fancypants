@@ -35,3 +35,27 @@
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 			<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
 		</a>
+    
+    <section class="head">
+        
+        <div class="stitching">
+
+            <header>
+                <h1></h1>
+
+                <nav>
+                    <ul>
+                        <li class="block"><a>The Author</a></li>
+                        <li class="block"><a>Events</a></li>
+                        <li class="block"><a>Merchandise</a></li>
+                        <li class="block"><a>Charities</a></li>
+                        <li class="block"><a>Kid's Fun</a></li>
+                        <li class="block"><a>Contact</a></li>
+                    </ul>
+                </nav>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
+            </header>
+            
+        </div>
+        
+    </section>
