@@ -42,17 +42,17 @@
 
             <header>
                 <h1></h1>
-
                 <nav>
                     <ul>
-                        <li class="block"><a>The Author</a></li>
-                        <li class="block"><a>Events</a></li>
-                        <li class="block"><a>Merchandise</a></li>
-                        <li class="block"><a>Charities</a></li>
-                        <li class="block"><a>Kid's Fun</a></li>
-                        <li class="block"><a>Contact</a></li>
+                        <li><a href="#" class="stitched">The Author</a></li>
+                        <li><a href="#" class="stitched">Events</a></li>
+                        <li><a href="#" class="stitched">Merchandise</a></li>
+                        <li><a href="#" class="stitched">Charities</a></li>
+                        <li><a href="#" class="stitched">Kid's Fun</a></li>
+                        <li><a href="#" class="stitched">Contact</a></li>
                     </ul>
                 </nav>
+                <a href="#" class="stitched btn">Buy The Book!</a>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
             </header>
             

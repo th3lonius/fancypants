@@ -1,0 +1,40 @@
+@include font-face(PT_Sans, 'fonts/pt_sans_caption');
+@include font-face(PT_Sans_Bold, 'fonts/pt_sans_caption_bold', bold);
+@include font-face(PT_Sans_Italic, 'fonts/PT_Sans-Web-Italic', normal, italic);
+
+$display-regular: 'PT_Sans';
+$display-italic: 'PT_Sans_Italic';
+$display-bold: 'PT_Sans_Bold';
+
+p {
+    font-family: $display-regular;
+}
+
+h1, h2, h3, h4 {
+    font-family: $display-bold;
+}
+
+h1 { font-size: golden-ratio(18px, 3); }
+
+h2 {
+    color: #B82256;
+    font-size: golden-ratio(18px, 2);
+    margin-bottom: 1em;
+}
+
+h3 {
+    color: #48D7AD;
+    font-size: golden-ratio(18px, 1);
+}
+
+h4 { font-size: golden-ratio(18px, 1); }
+
+time {
+    font-family: $display-regular;
+    line-height: 1.5;
+}
+
+a {
+    font-family: $display-regular;
+    font-size: 1em;
+}
