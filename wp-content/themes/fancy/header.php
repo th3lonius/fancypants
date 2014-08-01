@@ -44,12 +44,12 @@
                 <h1></h1>
                 <nav>
                     <ul>
-                        <li><a href="#" class="stitched">The Author</a></li>
-                        <li><a href="#" class="stitched">Events</a></li>
-                        <li><a href="#" class="stitched">Merchandise</a></li>
-                        <li><a href="#" class="stitched">Charities</a></li>
-                        <li><a href="#" class="stitched">Kid's Fun</a></li>
-                        <li><a href="#" class="stitched">Contact</a></li>
+                        <li><a href="#" class="stitched author">The Author</a></li>
+                        <li><a href="#" class="stitched events">Events</a></li>
+                        <li><a href="#" class="stitched fun">Kid's Fun</a></li>
+                        <li><a href="#" class="stitched charities">Charities</a></li>
+                        <li><a href="#" class="stitched merchandise">Merchandise</a></li>
+                        <li><a href="#" class="stitched contact">Contact</a></li>
                     </ul>
                 </nav>
                 <a href="#" class="stitched btn">Buy The Book!</a>

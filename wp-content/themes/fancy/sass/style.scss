@@ -49,9 +49,6 @@ $green: #48D7AD;
     border: 2px dashed rgba(255,255,255,0.6);
     text-shadow: -1px -1px rgba(10,10,0,0.3);
     font-weight: normal;
-    &:hover {
-        
-    }
 }
 
 div.head {
@@ -108,14 +105,25 @@ nav {
                 margin-right: 0;
             }
             a {
-                @include btn-color(tint($pink, 15%));
+                @include btn-color(tint($pink, 16%));
                 @include calc(width, '100% / 6');
                 margin-right: 2em;
                 padding: 12px 20px;
+                position: relative;
                 &:hover {
                     @include btn-color($pink);
                 }
+                &::after {
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 64px;
+                    width: 100%; height: 80px;
+                }
             }
+            .author::after { background-image: url(images/navball.png); }
         }
     }
 }
@@ -141,6 +149,7 @@ section {
 
 .abstract {
     background: url(images/pinstripe.png);
+    padding: golden-ratio(18px, 4);
     .wrapper {
         article {
             padding-top: 6em;
@@ -153,7 +162,7 @@ section {
         }
     }
     aside {
-        height: 600px;
+        height: 500px;
         &::before, &::after {
             background: url(images/frame.gif);
             background-repeat: no-repeat;
@@ -164,9 +173,9 @@ section {
             width: 126%; height: 153px;
             z-index: 101;
         }
-        &::before { top: -70px; }
+        &::before { top: -80px; }
         &::after {
-            bottom: -90px;
+            bottom: -80px;
             -moz-transform: scaleY(-1);
             -o-transform: scaleY(-1);
             -webkit-transform: scaleY(-1);
@@ -231,3 +240,64 @@ footer {
     min-height: 300px;
 }
 
+/*
+==============================================
+slideUp
+==============================================
+*/
+
+
+.slideUp{
+	animation-name: slideUp;
+	-webkit-animation-name: slideUp;	
+
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease;	
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;			
+}
+
+@keyframes slideUp {
+	0% {
+		transform: translateY(100%);
+	}
+	50%{
+		transform: translateY(-8%);
+	}
+	65%{
+		transform: translateY(4%);
+	}
+	80%{
+		transform: translateY(-4%);
+	}
+	95%{
+		transform: translateY(2%);
+	}			
+	100% {
+		transform: translateY(0%);
+	}	
+}
+
+@-webkit-keyframes slideUp {
+	0% {
+		-webkit-transform: translateY(100%);
+	}
+	50%{
+		-webkit-transform: translateY(-8%);
+	}
+	65%{
+		-webkit-transform: translateY(4%);
+	}
+	80%{
+		-webkit-transform: translateY(-4%);
+	}
+	95%{
+		-webkit-transform: translateY(2%);
+	}			
+	100% {
+		-webkit-transform: translateY(0%);
+	}	
+}

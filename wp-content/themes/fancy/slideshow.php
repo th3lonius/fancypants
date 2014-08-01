@@ -1,13 +1,18 @@
-<?php if( have_rows('slideshow_images') ): ?>
+<?php if( have_rows('slideshow') ): ?>
  
 	<div id="slides">
         
         <div class="slides-container">
  
-	<?php while( have_rows('slideshow_images') ): the_row(); 
+	   <?php while( have_rows('slideshow') ): the_row(); 
  
 		// vars
-		$image = get_sub_field('slideshow_image');
+		$image = get_sub_field('image');
+
+        $url = $image['url'];
+        $title = $image['title'];
+        $alt = $image['alt'];
+        $caption = $image['caption'];
 
         // thumbnail
         $size = 'thumbnail';
@@ -15,13 +20,17 @@
         $width = $image['sizes'][ $size . '-width' ];
         $height = $image['sizes'][ $size . '-height' ];
  
-		?>  
-            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
- 
-	<?php endwhile; ?>
+		?>
             
-        </div>
+<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
+           
  
-	</div>
+	   <?php endwhile; ?>
+            
+        </div><!-- /slides-container -->
+ 
+	</div><!-- /slides -->
  
 <?php endif; ?>
+
+ 
