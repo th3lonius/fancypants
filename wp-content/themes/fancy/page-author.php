@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template Name: Author page
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages and that
@@ -12,5 +12,15 @@
  */
 
 get_header(); ?>
+
+<article class="page author_about">
+    
+    <main>
+            
+        <?php get_template_part( 'content', 'page' ); ?>
+        
+    </main>
+    
+</article>
 
 <?php get_footer(); ?>

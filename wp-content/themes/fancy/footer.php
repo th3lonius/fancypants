@@ -11,9 +11,22 @@
     
     <div class="stitching">
         
-        <img src="<?php echo get_template_directory_uri(); ?>/images/mastfoot.svg"/>
+        <div class="wrapper">
+            
+            <div class="main">
+        
+                <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/mastfoot.svg"/>
+
+                <img class="facebook" src="<?php echo get_template_directory_uri(); ?>/images/facebook.png"/>
+                
+            </div>
     
-    
+            <div class="contact">
+                <a href="#" class="stitched btn">Contact us</a>
+            </div>
+            
+        </div>
+            
     </div>    
 
 </footer><!-- #colophon -->

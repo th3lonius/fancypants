@@ -21,7 +21,7 @@ $green: #48D7AD;
 
 @mixin btn-color($color){
     background: $color;
-    box-shadow: 0 0 0 6px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+    box-shadow: 0 0 0 5px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
 }
 
 .stitching {
@@ -35,8 +35,8 @@ $green: #48D7AD;
         width: 100%; height: 2px;
         z-index: 100;
     }
-    &::before { top: 20px; }
-    &::after { bottom: 20px; }
+    &::before { top: 18px; }
+    &::after { bottom: 18px; }
 }
 
 .stitched {
@@ -46,15 +46,20 @@ $green: #48D7AD;
     @include border-right-radius(2px);
     font-weight: bold;
     line-height: 1.3em;
-    border: 2px dashed rgba(255,255,255,0.6);
+    border: 1px dashed rgba(255,255,255,0.8);
     text-shadow: -1px -1px rgba(10,10,0,0.3);
     font-weight: normal;
 }
 
-div.head {
+/*
+==============================================
+HEADER
+==============================================
+*/
+header {
     background: url(images/classy_fabric.png);
     width: 100%; height: 330px;
-    header {
+    .wrapper {
         @include outer-container;
         padding: 40px 0;
         position: relative;
@@ -71,6 +76,7 @@ div.head {
             position: absolute;
             right: -20px; bottom: -80px;
             height: auto;
+            z-index: 999;
         }
         .btn {
             @include btn-color($green);
@@ -80,10 +86,12 @@ div.head {
             @include border-right-radius(999px);
             display: block;
             font-family: $display-bold;
-            padding: 17px;
+            font-size: 18px;
+            padding: 16px;
             position: absolute;
             top: 60px; right: 220px;
             text-align: center;
+            text-transform: uppercase;
             width: 100px; height: 100px;
             &:hover {
                 @include btn-color(shade($green,5%));
@@ -101,52 +109,74 @@ nav {
         li {
             float: left;
             height: 100%;
+            margin-right: 2em;
+            position: relative;
             &:last-child {
                 margin-right: 0;
             }
             a {
-                @include btn-color(tint($pink, 16%));
+                @include btn-color(tint($pink, 15%));
                 @include calc(width, '100% / 6');
-                margin-right: 2em;
+                border: 1px dashed rgba(255,255,255,0.4)!important;
                 padding: 12px 20px;
                 position: relative;
-                &:hover {
-                    @include btn-color($pink);
-                }
-                &::after {
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: 64px;
-                    width: 100%; height: 80px;
-                }
             }
-            .author::after { background-image: url(images/navball.png); }
+            div {
+                background-position: center;
+                background-repeat: no-repeat;
+                position: absolute;
+                top: 40px; right: 0;
+                visibility: hidden;
+                width: 100%; min-height: 95px;
+                z-index: 9999;
+            }
+            .author {
+                background-image: url(images/navmother.png);
+            }            
+            .events {
+                background-image: url(images/navlfp.png);
+            }            
+            .fun {
+                background-image: url(images/navball.png);
+            }            
+            .charities {
+                background-image: url(images/navlancelot.png);
+            }            
+            .merchandise {
+                background-image: url(images/navpants.png);
+            }            
+            .contact {
+                background-image: url(images/navspool.png);
+            }            
         }
     }
 }
 
-section {
-    padding: golden-ratio(18px, 3);
+/*
+==============================================
+GLOBALS
+==============================================
+*/
+section, footer {
+    padding: golden-ratio(18px, 2);
     .wrapper {
         @include outer-container;
         article {
+            @extend %clearfix;
             @include span-columns(6);
-            p {
-                font-size: 18px;
-                line-height: 1.5;
-                margin-bottom: golden-ratio(18px, 1);
-            }
         }
-        aside {
+        aside, header {
             @include span-columns(6);
             position: relative;
         }
     }
 }
 
+/*
+==============================================
+ABSTRACT SECTION
+==============================================
+*/
 .abstract {
     background: url(images/pinstripe.png);
     padding: golden-ratio(18px, 4);
@@ -169,8 +199,8 @@ section {
             background-size: 100%;
             content: "";
             position: absolute;
-            left: -69px;
-            width: 126%; height: 153px;
+            left: -65px;
+            width: 126%; height: 381px;
             z-index: 101;
         }
         &::before { top: -80px; }
@@ -186,7 +216,11 @@ section {
     }
 }
 
-
+/*
+==============================================
+BUY THE BOOK SECTION
+==============================================
+*/
 .buythebook {
     background: url(images/classy_fabric.png);
     color: #FFF;
@@ -198,21 +232,27 @@ section {
             img {
                 margin-bottom: golden-ratio(18px, 3);
             }
-            a.btn {
-                @include btn-color($green);
-                background: $green;
-                font-family: $display-bold;
-                font-size: golden-ratio(16px, 2);
-                padding: golden-ratio(16px, 2) golden-ratio(18px, 1);
-                text-transform: uppercase;
-                &:hover {
-                    @include btn-color(shade($green,5%));
-                }
-            }
         }
     }
 }
 
+a.btn {
+    @include btn-color($green);
+    background: $green;
+    font-family: $display-bold;
+    font-size: golden-ratio(14px, 2);
+    padding: golden-ratio(14px, 2) golden-ratio(14px, 1);
+    text-transform: uppercase;
+    &:hover {
+        @include btn-color(shade($green,5%));
+    }
+}
+
+/*
+==============================================
+NEWS SECTION
+==============================================
+*/
 .news {
     background: url(images/pinstripe.png);
     aside {
@@ -227,25 +267,109 @@ section {
     }
 }
 
-article {
-    @extend %clearfix;
-    margin-top: 1px;
-    position: relative;
-	height: 100%;
-    width: 100%;
-}
-
+/*
+==============================================
+FOOTER
+==============================================
+*/
 footer {
     background: url(images/classy_fabric_black.png);
     min-height: 300px;
+    padding: 0;
+    .stitching {
+        padding: golden-ratio(18px, 3) 0;
+        .main {
+            @extend %clearfix;
+            @include span-columns(7);
+            vertical-align: bottom;
+        }
+        .contact {
+            @include span-columns(5);
+        }
+    }
+    .mastfoot {
+        float: left;
+        width: 80%;
+    }
+    .facebook {
+        float: left;
+        width: 50px; height: 50px;
+    }
 }
+
+/*
+==============================================
+PAGES TEMPLATE
+==============================================
+*/
+.page {
+    background: url(images/pinstripe.png);
+    main {
+        @include outer-container;
+        section {
+            @include span-columns(8);
+            background: #FFF;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            header {
+                
+            }
+        }
+        aside {
+            @include span-columns(4);
+            background: #FFF;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            padding: golden-ratio(18px, 2);
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/*
+==============================================
+AUTHOR PAGE
+==============================================
+*/
+.author_about {
+    padding: golden-ratio(18px, 4);
+    header {
+        -webkit-transform: scale(0.7);
+        height: 500px;
+        &::before, &::after {
+            background: url(images/frame.gif);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            content: "";
+            position: absolute;
+            left: -65px;
+            width: 126%; height: 381px;
+            z-index: 101;
+        }
+        &::before { top: -80px; }
+        &::after {
+            bottom: -80px;
+            -moz-transform: scaleY(-1);
+            -o-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+            filter: FlipH;
+            -ms-filter: "FlipH";
+        }
+        h1 {
+            background-image: url(images/aboutauthor.png);
+            text-indent: -9999px;
+        }
+    }
+}
+
+
 
 /*
 ==============================================
 slideUp
 ==============================================
 */
-
 
 .slideUp{
 	animation-name: slideUp;

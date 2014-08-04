@@ -32,30 +32,44 @@
 
 <body <?php body_class(); ?>>
 
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
-		</a>
-    
-    <div class="head">
+    <header>
         
         <div class="stitching">
 
-            <header>
+            <div class="wrapper">
                 <h1></h1>
                 <nav>
                     <ul>
-                        <li><a href="#" class="stitched author">The Author</a></li>
-                        <li><a href="#" class="stitched events">Events</a></li>
-                        <li><a href="#" class="stitched fun">Kid's Fun</a></li>
-                        <li><a href="#" class="stitched charities">Charities</a></li>
-                        <li><a href="#" class="stitched merchandise">Merchandise</a></li>
-                        <li><a href="#" class="stitched contact">Contact</a></li>
+                        <li>
+                            <a href="<?php bloginfo( 'site_url' ); ?>/author" class="stitched">The Author</a>
+                            <div class="author"></div>
+                        </li>
+                        <li>
+                            <a href="#" class="stitched">Events</a>
+                            <div class="events"></div>
+                        </li>
+                        <li>
+                            <a href="#" class="stitched">Kid's Fun</a>
+                            <div class="fun"></div>
+                        </li>
+                        <li>
+                            <a href="#" class="stitched">Charities</a>
+                            <div class="charities"></div>
+                        </li>
+                        <li>
+                            <a href="#" class="stitched">Merchandise</a>
+                            <div class="merchandise"></div>
+                        </li>
+                        <li>
+                            <a href="#" class="stitched">Contact</a>
+                            <div class="contact"></div>
+                        </li>
                     </ul>
                 </nav>
                 <a href="#" class="stitched btn">Buy The Book!</a>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
-            </header>
+            </div>
             
         </div>
         
-    </div>
+    </header>

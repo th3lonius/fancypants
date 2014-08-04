@@ -8,24 +8,37 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		// Page thumbnail and title.
-		twentyfourteen_post_thumbnail();
-		the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header><!-- .entry-header -->' );
-	?>
+<section id="content">
+    
+    <header>
 
-	<div class="entry-content">
-		<?php
-			the_content();
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
+        <h1>About the Author</h1>
 
-			edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
-		?>
-	</div><!-- .entry-content -->
-</article><!-- #post-## -->
+        <?php 
+
+        $image = get_field('image');
+
+        if( !empty($image) ): ?>
+
+            <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+
+        <?php endif; ?>
+
+    </header>
+
+        <?php
+            // Start the Loop.
+            while ( have_posts() ) : the_post();
+
+                the_content();
+
+            endwhile;
+        ?>
+
+</section>
+
+<aside>
+    
+    <?php get_template_part( 'sidebar', '' ); ?>
+
+</aside>

@@ -1,29 +1,19 @@
 <?php
-/**
- * The Sidebar containing the main widget area
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
+
+    $args = array(
+        'category_name' => 'news'
+    );
+
+    $new_query = new WP_Query( $args );
+
 ?>
-<div id="secondary">
-	<?php
-		$description = get_bloginfo( 'description', 'display' );
-		if ( ! empty ( $description ) ) :
-	?>
-	<h2 class="site-description"><?php echo esc_html( $description ); ?></h2>
-	<?php endif; ?>
 
-	<?php if ( has_nav_menu( 'secondary' ) ) : ?>
-	<nav role="navigation" class="navigation site-navigation secondary-navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
-	</nav>
-	<?php endif; ?>
+<?php
+    // Start the Loop.
+    while ( $new_query->have_posts() ) : $new_query->the_post();
+        the_title('<h3>','</h3>');
+        the_date('','<time>','</time>');
+        the_excerpt();
 
-	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-	<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
-		<?php dynamic_sidebar( 'sidebar-1' ); ?>
-	</div><!-- #primary-sidebar -->
-	<?php endif; ?>
-</div><!-- #secondary -->
+    endwhile;
+?>

@@ -8,6 +8,9 @@ $display-bold: 'PT_Sans_Bold';
 
 p {
     font-family: $display-regular;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: golden-ratio(18px, 1);
 }
 
 h1, h2, h3, h4 {

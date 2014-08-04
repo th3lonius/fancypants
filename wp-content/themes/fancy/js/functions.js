@@ -1,12 +1,11 @@
 jQuery(document).ready(function($){
 
-
 /*MENUCONTROLLER*/
 // Hide Header on on scroll down
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
-var navbarHeight = $('body > header').outerHeight();
+var navbarHeight = $('.head').outerHeight();
 
 $(window).scroll(function(event){
     didScroll = true;
@@ -30,11 +29,11 @@ function hasScrolled() {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight){
         // Scroll Down
-        $('body > header').removeClass('nav-down').addClass('nav-up');
+        $('.head').removeClass('nav-down').addClass('nav-up');
     } else {
         // Scroll Up
         if(st + $(window).height() < $(document).height()) {
-            $('body > header').removeClass('nav-up').addClass('nav-down');
+            $('.head').removeClass('nav-up').addClass('nav-down');
         }
     }
     
@@ -52,9 +51,15 @@ $('#slides').superslides({
 });
     
     
-	$('nav ul li a').hover(function() {
-		$(this).addClass("slideUp");
-	});
-    
+    $('nav ul li a')
+      .mouseenter(function(e) {
+          if (e.target === this) {
+            $(this).nextAll().fadeIn().addClass('slideUp');
+          }
+      })
+      .mouseleave(function() {
+        $(this).nextAll().fadeOut('fast');
+      });
+
     
 }); //end ready
