@@ -40,15 +40,15 @@ function hasScrolled() {
     lastScrollTop = st;
 }
 	
-/*SUPERSLIDES*/
-$('#slides').superslides({
-    play: 5000,
-	animation: 'fade',
-	animation_speed: 'normal',
-    pagination: false,
-    inherit_width_from: '.abstract aside',
-    inherit_height_from: '.abstract aside'
-});
+    /*SUPERSLIDES*/
+    $('#slides').superslides({
+        play: 5000,
+        animation: 'fade',
+        animation_speed: 'normal',
+        pagination: false,
+        inherit_width_from: '.abstract aside',
+        inherit_height_from: '.abstract aside'
+    });
     
     
     $('nav ul li a')
@@ -61,5 +61,18 @@ $('#slides').superslides({
         $(this).nextAll().fadeOut('fast');
       });
 
+    
+    
+	$(window).scroll(function() {
+		$('.buythebook > *').each(function(){
+		var imagePos = $(this).offset().top;
+
+		var topOfWindow = $(window).scrollTop();
+			if (imagePos < topOfWindow+400) {
+				$(this).addClass("slideRight");
+			}
+		});
+	});
+    
     
 }); //end ready

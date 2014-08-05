@@ -34,10 +34,14 @@
 
     <header>
         
+        <div class="sparkle star-1"></div>
+        <div class="sparkle star-2"></div>
+        <div class="sparkle star-3"></div>
+        
         <div class="stitching">
 
             <div class="wrapper">
-                <h1></h1>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><h1></h1></a>
                 <nav>
                     <ul>
                         <li>
@@ -58,7 +62,7 @@
                         </li>
                         <li>
                             <a href="#" class="stitched">Merchandise</a>
-                            <div class="merchandise"></div>
+                            <div class="merchandise">Coming Soon!</div>
                         </li>
                         <li>
                             <a href="#" class="stitched">Contact</a>
@@ -66,8 +70,8 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="#" class="stitched btn">Buy The Book!</a>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
+                <a href="#" class="stitched btn pulse">Buy The Book!</a>
+                <img class="slideDown" src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
             </div>
             
         </div>

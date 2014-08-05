@@ -6,8 +6,12 @@ $display-regular: 'PT_Sans';
 $display-italic: 'PT_Sans_Italic';
 $display-bold: 'PT_Sans_Bold';
 
-p {
+body {
     font-family: $display-regular;
+}
+
+p {
+    color: #666;
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: golden-ratio(18px, 1);
@@ -33,11 +37,9 @@ h3 {
 h4 { font-size: golden-ratio(18px, 1); }
 
 time {
-    font-family: $display-regular;
     line-height: 1.5;
 }
 
 a {
-    font-family: $display-regular;
     font-size: 1em;
 }

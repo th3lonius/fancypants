@@ -8,12 +8,10 @@
 
 ?>
 
-<?php
-    // Start the Loop.
-    while ( $new_query->have_posts() ) : $new_query->the_post();
-        the_title('<h3>','</h3>');
-        the_date('','<time>','</time>');
-        the_excerpt();
+<?php while ( $new_query->have_posts() ) : $new_query->the_post(); ?>
 
-    endwhile;
-?>
+    <a href="<?php the_permalink()?>"><?php the_title('<h3>','</h3>'); ?></a>
+    <?php the_date('','<time>','</time>'); ?>
+    <?php the_excerpt(); ?>
+
+<?php endwhile; ?>
