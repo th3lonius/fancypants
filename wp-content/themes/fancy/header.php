@@ -30,7 +30,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body>
 
     <header>
         
@@ -45,7 +45,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="<?php bloginfo( 'site_url' ); ?>/author" class="stitched">The Author</a>
+                            <a href="<?php echo get_site_url(); ?>/author" class="stitched">The Author</a>
                             <div class="author"></div>
                         </li>
                         <li>
@@ -53,7 +53,7 @@
                             <div class="events"></div>
                         </li>
                         <li>
-                            <a href="#" class="stitched">Kid's Fun</a>
+                            <a href="<?php echo get_site_url(); ?>/kids-fun" class="stitched">Kid's Fun</a>
                             <div class="fun"></div>
                         </li>
                         <li>
@@ -65,12 +65,12 @@
                             <div class="merchandise">Coming Soon!</div>
                         </li>
                         <li>
-                            <a href="#" class="stitched">Contact</a>
+                            <a href="<?php echo get_site_url(); ?>/contact" class="stitched">Contact</a>
                             <div class="contact"></div>
                         </li>
                     </ul>
                 </nav>
-                <a href="#" class="stitched btn pulse">Buy The Book!</a>
+                <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn pulse">Buy The Book!</a>
                 <img class="slideDown" src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
             </div>
             

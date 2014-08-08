@@ -13,4 +13,14 @@
 
 get_header(); ?>
 
+<article class="page <?php global $post; echo $post->post_name; ?>">
+    
+    <main>
+            
+        <?php get_template_part( 'content', 'page' ); ?>
+        
+    </main>
+    
+</article>
+
 <?php get_footer(); ?>

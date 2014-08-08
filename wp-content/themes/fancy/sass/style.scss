@@ -59,7 +59,7 @@ HEADER
 */
 body > header {
     background: url(images/classy_fabric.png);
-    width: 100%; height: 330px;
+    width: 100%; height: 400px;
     .wrapper {
         @include outer-container;
         padding: 40px 0;
@@ -122,15 +122,17 @@ nav {
                 border: 1px dashed rgba(255,255,255,0.4)!important;
                 padding: 12px 20px;
                 position: relative;
+                z-index: 9999;
             }
             div {
                 background-position: center;
                 background-repeat: no-repeat;
+                background-size: 80%;
                 position: absolute;
-                top: 40px; right: 0;
+                top: -110px; right: 0;
                 visibility: hidden;
                 width: 100%; min-height: 95px;
-                z-index: 9999;
+                z-index: 999;
             }
             .author {
                 background-image: url(images/navmother.png);
@@ -145,7 +147,9 @@ nav {
                 background-image: url(images/navlancelot.png);
             }            
             .merchandise {
-                
+                color: #FFF;
+                text-align: center;
+                top: -60px;
             }            
             .contact {
                 background-image: url(images/navspool.png);
@@ -160,7 +164,7 @@ GLOBALS
 ==============================================
 */
 section, footer {
-    padding: golden-ratio(18px, 2);
+    padding: golden-ratio(18px, 4);
     .wrapper {
         @include outer-container;
         article {
@@ -181,7 +185,7 @@ ABSTRACT SECTION
 */
 .abstract {
     background: url(images/pinstripe.png);
-    padding: golden-ratio(18px, 4);
+    padding: golden-ratio(18px, 5) golden-ratio(18px, 2);
     .wrapper {
         article {
             padding-top: 6em;
@@ -230,7 +234,7 @@ BUY THE BOOK SECTION
         visibility: hidden;
     }
     .stitching {
-        padding: golden-ratio(18px, 4) 0;
+        padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
         article p { color: #FFF; }
         aside {
             text-align: center;
@@ -309,14 +313,24 @@ PAGES TEMPLATE
 */
 .page {
     background: url(images/pinstripe.png);
+    padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
     main {
         @include outer-container;
         section {
             @include span-columns(8);
             background: #FFF;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 2px 2px 5px rgba(10,10,10,0.2);
+            padding: golden-ratio(18px, 1);
             header {
                 @extend %clearfix;
+                margin-bottom: 4em;
+                h1 {
+                    
+                }
+                img {
+                    float: left;
+                    width: 58%;
+                }
                 .framed {
                     position: relative;
                     &::before, &::after {
@@ -346,7 +360,7 @@ PAGES TEMPLATE
             @include span-columns(4);
             background: #FFF;
             box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            padding: golden-ratio(18px, 2);
+            padding: golden-ratio(18px, 1);
             p {
                 font-size: 14px;
             }
@@ -359,21 +373,41 @@ PAGES TEMPLATE
 AUTHOR PAGE
 ==============================================
 */
-.author_about {
-    padding: golden-ratio(18px, 4);
-    header {
-        margin-bottom: 4em;
-        img {
+.author {
+    h1 {
+        background-image: url(images/aboutauthor.png);
+        background-repeat: no-repeat;
+        background-size: 90%;
+        float: left;
+        text-indent: -9999px;
+        width: 42%; height: 300px;
+    }
+}
+
+/*
+==============================================
+KID'S FUN PAGE
+==============================================
+*/
+.kids-fun {
+    .grid_thumb {
+        @extend %clearfix;
+        li {
             float: left;
-            width: 58%;
-        }
-        h1 {
-            background-image: url(images/aboutauthor.png);
-            background-repeat: no-repeat;
-            background-size: 90%;
-            float: left;
-            text-indent: -9999px;
-            width: 42%; height: 300px;
+            padding: 8px;
+            width: 33.33333333%;
+            a {
+                border: 2px dashed $green;
+                display: block;
+                overflow: hidden;
+                img {
+                    -webkit-transition: 0.2s all ease 0.05s;
+                    padding: 8px;
+                    &:hover {
+                        -webkit-transform: scale(1.3);
+                    }
+                }
+            }
         }
     }
 }
