@@ -54,7 +54,7 @@ function hasScrolled() {
     $('nav ul li a')
       .mouseenter(function(e) {
           if (e.target === this) {
-            $(this).nextAll().fadeIn().addClass('slideUp');
+            $(this).nextAll().fadeIn().addClass('slideDown');
           }
       })
       .mouseleave(function() {

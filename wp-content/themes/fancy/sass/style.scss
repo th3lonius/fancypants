@@ -16,16 +16,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import 'type';
 @import 'animations';
 
-
-$pink: #B92356;
-$green: #48D7AD;
-
 @mixin btn-color($color){
     background: $color;
     box-shadow: 0 0 0 5px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
 }
 
 .stitching {
+    box-shadow: 0 2px 4px rgba(10,10,10,0.3);
     position: relative;
     width: 100%; height: 100%;
     &::before, &::after {
@@ -54,14 +51,36 @@ $green: #48D7AD;
 
 /*
 ==============================================
+GLOBALS
+==============================================
+*/
+section, footer {
+    padding: golden-ratio(18px, 4);
+    .wrapper {
+        @include outer-container;
+        min-width: 66em;
+        article {
+            @extend %clearfix;
+            @include span-columns(6);
+        }
+        aside, header {
+            @include span-columns(6);
+            position: relative;
+        }
+    }
+}
+
+/*
+==============================================
 HEADER
 ==============================================
 */
 body > header {
-    background: url(images/classy_fabric.png);
-    width: 100%; height: 400px;
+    background: url(images/classy_fabric_pink.gif);
+    width: 100%; height: 340px;
     .wrapper {
         @include outer-container;
+        min-width: 66em;
         padding: 40px 0;
         position: relative;
         height: 100%;
@@ -89,12 +108,12 @@ body > header {
             display: block;
             font-family: $display-bold;
             font-size: 18px;
-            padding: 16px;
+            padding: 14px 18px 18px;
             position: absolute;
             top: 60px; right: 280px;
             text-align: center;
             text-transform: uppercase;
-            width: 100px; height: 100px;
+            width: 124px; height: 124px;
             &:hover {
                 @include btn-color(shade($green,5%));
             }
@@ -105,7 +124,7 @@ body > header {
 nav {
     @include span-columns(11);
     position: absolute;
-    bottom: 60px; left: 0;
+    bottom: 40px; left: 0;
     ul {
         height: 100%;
         li {
@@ -118,18 +137,18 @@ nav {
             }
             a {
                 @include btn-color(tint($pink, 15%));
-                @include calc(width, '100% / 6');
                 border: 1px dashed rgba(255,255,255,0.4)!important;
+                display: block;
                 padding: 12px 20px;
                 position: relative;
-                z-index: 9999;
+                z-index: 99999;
             }
             div {
                 background-position: center;
                 background-repeat: no-repeat;
-                background-size: 80%;
+                background-size: contain;
                 position: absolute;
-                top: -110px; right: 0;
+                top: 50px; right: 0;
                 visibility: hidden;
                 width: 100%; min-height: 95px;
                 z-index: 999;
@@ -149,7 +168,7 @@ nav {
             .merchandise {
                 color: #FFF;
                 text-align: center;
-                top: -60px;
+                top: 70px;
             }            
             .contact {
                 background-image: url(images/navspool.png);
@@ -160,20 +179,110 @@ nav {
 
 /*
 ==============================================
-GLOBALS
+PAGES TEMPLATE
 ==============================================
 */
-section, footer {
-    padding: golden-ratio(18px, 4);
+.page {
+    background-color: #dbfffa;
+    background-image: url(images/pinstripe.png);
+    padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
     .wrapper {
+        min-width: 30em;
+    }
+    h1 {
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: contain;
+        color: tint($pink, 15%);
+        font-size: golden-ratio(18px, 1);
+    }
+    main {
         @include outer-container;
-        article {
-            @extend %clearfix;
-            @include span-columns(6);
+        margin-bottom: 6em;
+        section {
+            @include span-columns(8);
+            background: #FFF;
+            box-shadow: 2px 2px 5px rgba(10,10,10,0.2);
+            padding: golden-ratio(18px, 1);
+            header {
+                @extend %clearfix;
+                margin-bottom: 4em;
+                img {
+                    float: left;
+                    width: 58%;
+                }
+                .framed {
+                    position: relative;
+                    &::before, &::after {
+                        background: url(images/frame.gif);
+                        background-repeat: no-repeat;
+                        background-size: 100%;
+                        content: "";
+                        position: absolute;
+                        left: -65px;
+                        width: 126%; height: 381px;
+                        z-index: 101;
+                    }
+                    &::before { top: -80px; }
+                    &::after {
+                        bottom: -80px;
+                        -moz-transform: scaleY(-1);
+                        -o-transform: scaleY(-1);
+                        -webkit-transform: scaleY(-1);
+                        transform: scaleY(-1);
+                        filter: FlipH;
+                        -ms-filter: "FlipH";
+                    }
+                }
+            }
         }
-        aside, header {
-            @include span-columns(6);
-            position: relative;
+        aside {
+            @include span-columns(4);
+            div.module {
+                background: #FFF;
+                box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+                margin-bottom: 2em;
+                padding: golden-ratio(18px, 1);
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/*
+==============================================
+SIDEBAR
+==============================================
+*/
+.sidebar {
+    h3 {
+        color: $pink;
+        font-size: 24px;
+        margin-bottom: 1em;
+    }
+    .review_module {
+        background-image: url(images/frame_repeat.png);
+        background-position: center 150px;
+        background-repeat: repeat-y;
+        position: relative;
+        width: 100%;
+        p {
+            margin: 0 auto;
+            margin-top: -30px;
+            width: 70%;
+        }
+        .frame_top {
+            margin-top: -40px;
+        }
+        .frame_bottom {
+            margin-bottom: -40px;
+        }
+        .frame_lookers {
+            bottom: -204px;
+            position: absolute;
+            z-index: 999999;
         }
     }
 }
@@ -184,7 +293,7 @@ ABSTRACT SECTION
 ==============================================
 */
 .abstract {
-    background: url(images/pinstripe.png);
+    background-image: url(images/pinstripe.png);
     padding: golden-ratio(18px, 5) golden-ratio(18px, 2);
     .wrapper {
         article {
@@ -228,7 +337,7 @@ BUY THE BOOK SECTION
 ==============================================
 */
 .buythebook {
-    background: url(images/classy_fabric.png);
+    background: url(images/classy_fabric_pink.gif);
     padding: 0;
     & > * {
         visibility: hidden;
@@ -239,7 +348,7 @@ BUY THE BOOK SECTION
         aside {
             text-align: center;
             img {
-                margin-bottom: golden-ratio(18px, 3);
+                margin-bottom: golden-ratio(18px, 2);
             }
         }
     }
@@ -248,9 +357,11 @@ BUY THE BOOK SECTION
 a.btn {
     @include btn-color($green);
     background: $green;
+    display: inline;
     font-family: $display-bold;
-    font-size: golden-ratio(14px, 2);
-    padding: golden-ratio(14px, 2) golden-ratio(14px, 1);
+    font-size: golden-ratio(14px, 1);
+    margin: 0 auto;
+    padding: golden-ratio(12px, 1) golden-ratio(14px, 1);
     text-transform: uppercase;
     &:hover {
         @include btn-color(shade($green,5%));
@@ -278,105 +389,12 @@ NEWS SECTION
 
 /*
 ==============================================
-FOOTER
-==============================================
-*/
-footer {
-    background: url(images/classy_fabric_black.png);
-    min-height: 300px;
-    padding: 0;
-    .stitching {
-        padding: golden-ratio(18px, 3) 0;
-        .main {
-            @extend %clearfix;
-            @include span-columns(7);
-            vertical-align: bottom;
-        }
-        .contact {
-            @include span-columns(5);
-        }
-    }
-    .mastfoot {
-        float: left;
-        width: 80%;
-    }
-    .facebook {
-        float: left;
-        width: 50px; height: 50px;
-    }
-}
-
-/*
-==============================================
-PAGES TEMPLATE
-==============================================
-*/
-.page {
-    background: url(images/pinstripe.png);
-    padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
-    main {
-        @include outer-container;
-        section {
-            @include span-columns(8);
-            background: #FFF;
-            box-shadow: 2px 2px 5px rgba(10,10,10,0.2);
-            padding: golden-ratio(18px, 1);
-            header {
-                @extend %clearfix;
-                margin-bottom: 4em;
-                h1 {
-                    
-                }
-                img {
-                    float: left;
-                    width: 58%;
-                }
-                .framed {
-                    position: relative;
-                    &::before, &::after {
-                        background: url(images/frame.gif);
-                        background-repeat: no-repeat;
-                        background-size: 100%;
-                        content: "";
-                        position: absolute;
-                        left: -65px;
-                        width: 126%; height: 381px;
-                        z-index: 101;
-                    }
-                    &::before { top: -80px; }
-                    &::after {
-                        bottom: -80px;
-                        -moz-transform: scaleY(-1);
-                        -o-transform: scaleY(-1);
-                        -webkit-transform: scaleY(-1);
-                        transform: scaleY(-1);
-                        filter: FlipH;
-                        -ms-filter: "FlipH";
-                    }
-                }
-            }
-        }
-        aside {
-            @include span-columns(4);
-            background: #FFF;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            padding: golden-ratio(18px, 1);
-            p {
-                font-size: 14px;
-            }
-        }
-    }
-}
-
-/*
-==============================================
 AUTHOR PAGE
 ==============================================
 */
 .author {
     h1 {
         background-image: url(images/aboutauthor.png);
-        background-repeat: no-repeat;
         background-size: 90%;
         float: left;
         text-indent: -9999px;
@@ -390,6 +408,11 @@ KID'S FUN PAGE
 ==============================================
 */
 .kids-fun {
+    h1 {
+        background-image: url(images/kidsfun_heading.png);
+        text-indent: -9999px;
+        width: 100%; min-height: 140px;
+    }
     .grid_thumb {
         @extend %clearfix;
         li {
@@ -412,109 +435,95 @@ KID'S FUN PAGE
     }
 }
 
-
 /*
 ==============================================
-pulse
+CHARITIES PAGE
 ==============================================
 */
-
-.pulse{
-	animation-name: pulse;
-	-webkit-animation-name: pulse;	
-
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
-
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
-    
-    -webkit-animation-delay: 2.5s;
-    animation-delay: 2.5s;
-}
-
-@keyframes pulse {
-	0% {
-		transform: scale(0.9);
-		opacity: 0.7;		
-	}
-	50% {
-		transform: scale(1);
-		opacity: 1;	
-	}	
-	100% {
-		transform: scale(0.9);
-		opacity: 0.7;	
-	}			
-}
-
-@-webkit-keyframes pulse {
-	0% {
-		-webkit-transform: scale(1);
-		opacity: 1;		
-	}
-	50% {
-		-webkit-transform: scale(0.97);
-		opacity: 0.7;	
-	}	
-	100% {
-		-webkit-transform: scale(1);
-		opacity: 1;	
-	}			
+.charities {
+    h1 {
+        background-image: url(images/charities_heading.png);
+        text-indent: -9999px;
+        width: 100%; min-height: 140px;
+    }
 }
 
 /*
 ==============================================
-sparkle
+CONTACT PAGE
 ==============================================
 */
-
-.sparkle {
-    background-image: url(images/sparkle.gif);
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0;
-    position: absolute;
-    width: 20px; height: 20px;
+.contact {
+    h1 {
+        background-image: url(images/contact_heading.png);
+        text-indent: -9999px;
+        width: 100%; min-height: 140px;
+    }
 }
 
-.star-1 {
-    left: 300px; top: 100px;
+/*
+==============================================
+EVENTS PAGE
+==============================================
+*/
+.events {
+    h1 {
+        background-image: url(images/events_heading.png);
+        background-size: 75%;
+        text-indent: -9999px;
+        width: 100%; min-height: 140px;
+    }
 }
 
-.star-2 {
-    left: 550px; top: 50px;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-}
-
-.star-3 {
-    left: 825px; top: 200px;
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-}
-
-.sparkle {
-	animation-name: sparkle;
-	-webkit-animation-name: sparkle;	
-
-	animation-duration: 1s;	
-	-webkit-animation-duration: 1s;
-    
-	animation-iteration-count: 1;
-	-webkit-animation-iteration-count: 1;
-    
-    -webkit-animation-fill-mode: forwards;
-}
-
-@keyframes sparkle {
- 0%  { transform: scale(0.5); opacity: 0; }
- 50%  { transform: scale(1); opacity: 1; }
- 100% { transform: scale(0.3); opacity: 0; }	
-}
-
-@-webkit-keyframes sparkle {
- 0%  { -webkit-transform: scale(0.5); opacity: 0; }
- 50%  { -webkit-transform: scale(1); opacity: 1; }
- 100% { -webkit-transform: scale(0.3); opacity: 0; }
+/*
+==============================================
+FOOTER
+==============================================
+*/
+footer {
+    background: url(images/classy_fabric_black.png);
+    min-height: 300px;
+    padding: 0;
+    .stitching {
+        padding: golden-ratio(18px, 3) 0;
+        .main {
+            @extend %clearfix;
+            @include span-columns(7);
+            vertical-align: bottom;
+            &::before {
+                content: "";
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                margin-right: -0.25em;
+            }
+        }
+        .contact {
+            @include span-columns(5);
+            margin: 55px 0;
+            text-align: center;
+            .btn {
+                @include btn-color($pink);
+                background: $pink;
+                font-size: 18px;
+                opacity: 0.9;
+                text-align: center;
+                padding: 18px 14px;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .mastfoot {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: middle;
+        width: 84%;
+    }
+    .facebook {
+        display: inline-block;
+        vertical-align: middle;
+        width: 50px; height: 50px;
+    }
 }

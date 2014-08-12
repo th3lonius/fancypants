@@ -6,7 +6,7 @@
 
             <aside>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/book_open.png"/>
-                <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn">Buy the Book!</a>
+                <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn">Get Your Copy Today!</a>
             </aside>
 
             <article>

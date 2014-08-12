@@ -82,7 +82,7 @@
     
 </section>
 
-<aside>
+<aside class="sidebar">
     
     <?php get_template_part( 'sidebar', '' ); ?>
 

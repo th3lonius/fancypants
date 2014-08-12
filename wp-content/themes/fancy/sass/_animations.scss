@@ -12,12 +12,70 @@ justin@justinaguilar.com
 ==============================================
 */
 
+
+/*
+==============================================
+sparkle
+==============================================
+*/
+
+.sparkle {
+    background-image: url(images/sparkle.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    position: absolute;
+    width: 20px; height: 20px;
+}
+
+.star-1 {
+    left: 300px; top: 100px;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+.star-2 {
+    left: 550px; top: 50px;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+}
+
+.star-3 {
+    left: 825px; top: 200px;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+
+.sparkle {
+	animation-name: sparkle;
+	-webkit-animation-name: sparkle;	
+
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
+    
+	animation-iteration-count: 1;
+	-webkit-animation-iteration-count: 1;
+    
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes sparkle {
+ 0%  { transform: scale(0.5); opacity: 0; }
+ 50%  { transform: scale(1); opacity: 1; }
+ 100% { transform: scale(0.3); opacity: 0; }	
+}
+
+@-webkit-keyframes sparkle {
+ 0%  { -webkit-transform: scale(0.5); opacity: 0; }
+ 50%  { -webkit-transform: scale(1); opacity: 1; }
+ 100% { -webkit-transform: scale(0.3); opacity: 0; }
+}
+
 /*
 ==============================================
 slideDown
 ==============================================
 */
-
 
 .slideDown{
 	animation-name: slideDown;

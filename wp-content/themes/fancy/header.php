@@ -49,7 +49,7 @@
                             <div class="author"></div>
                         </li>
                         <li>
-                            <a href="#" class="stitched">Events</a>
+                            <a href="<?php echo get_site_url(); ?>/events" class="stitched">Events</a>
                             <div class="events"></div>
                         </li>
                         <li>
@@ -57,7 +57,7 @@
                             <div class="fun"></div>
                         </li>
                         <li>
-                            <a href="#" class="stitched">Charities</a>
+                            <a href="<?php echo get_site_url(); ?>/charities" class="stitched">Charities</a>
                             <div class="charities"></div>
                         </li>
                         <li>
@@ -70,7 +70,7 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn pulse">Buy The Book!</a>
+                <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn">Get Your Copy Today!</a>
                 <img class="slideDown" src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
             </div>
             

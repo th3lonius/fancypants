@@ -15,14 +15,14 @@
             
             <div class="main">
         
-                <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/mastfoot.svg"/>
+                <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/masthead.svg"/>
 
                 <img class="facebook" src="<?php echo get_template_directory_uri(); ?>/images/facebook.png"/>
                 
             </div>
     
             <div class="contact">
-                <a href="#" class="stitched btn">Contact us</a>
+                <a href="#" class="stitched btn">Contact the Author</a>
             </div>
             
         </div>

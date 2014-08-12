@@ -16,8 +16,18 @@ get_header(); ?>
 <article class="page <?php global $post; echo $post->post_name; ?>">
     
     <main>
+        
+        <?php if (is_page('events')) {
+
+            get_template_part( 'archive', '' );
+
+            } else {
+    
+            get_template_part( 'content', 'page' );
             
-        <?php get_template_part( 'content', 'page' ); ?>
+            }
+        
+        ?>
         
     </main>
     
