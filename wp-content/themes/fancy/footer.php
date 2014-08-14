@@ -17,12 +17,12 @@
         
                 <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/masthead.svg"/>
 
-                <img class="facebook" src="<?php echo get_template_directory_uri(); ?>/images/facebook.png"/>
+                <a href="https://www.facebook.com/lordfancypantsbooks"><img class="facebook" src="<?php echo get_template_directory_uri(); ?>/images/facebook.png"/></a>
                 
             </div>
     
             <div class="contact">
-                <a href="#" class="stitched btn">Contact the Author</a>
+                <a href="mailto:debbie@lordfancypants.com" class="stitched btn">Contact the Author</a>
             </div>
             
         </div>
@@ -30,6 +30,8 @@
     </div>    
 
 </footer><!-- #colophon -->
+
+
 
 	<?php wp_footer(); ?>
 </body>

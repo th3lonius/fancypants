@@ -9,6 +9,8 @@ License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+$mobile: new-breakpoint(max-width 720px 12);
+
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 @import 'reset';
@@ -58,7 +60,6 @@ section, footer {
     padding: golden-ratio(18px, 4);
     .wrapper {
         @include outer-container;
-        min-width: 66em;
         article {
             @extend %clearfix;
             @include span-columns(6);
@@ -70,6 +71,12 @@ section, footer {
     }
 }
 
+.wrapper {
+	padding: 0 30px;
+	max-width: 1000px;
+}
+
+
 /*
 ==============================================
 HEADER
@@ -77,10 +84,10 @@ HEADER
 */
 body > header {
     background: url(images/classy_fabric_pink.gif);
-    width: 100%; height: 340px;
+    width: 100%; height: 320px;
+	
     .wrapper {
         @include outer-container;
-        min-width: 66em;
         padding: 40px 0;
         position: relative;
         height: 100%;
@@ -92,14 +99,21 @@ body > header {
             height: 250px;
         }
         img {
+			@include media(max-width 1024px) {
+				@include span-columns(2);
+				right: 10px; bottom: -60px;
+			}
             @include span-columns(3);
             position: absolute;
             right: -20px; bottom: -80px;
             height: auto;
-            z-index: 999;
+            z-index: 99999;
             visibility: hidden;
         }
         .btn {
+			@include media(max-width 1024px) {
+				right: 220px;
+			}
             @include btn-color($green);
             @include border-top-radius(999px);
             @include border-bottom-radius(999px);
@@ -139,7 +153,7 @@ nav {
                 @include btn-color(tint($pink, 15%));
                 border: 1px dashed rgba(255,255,255,0.4)!important;
                 display: block;
-                padding: 12px 20px;
+                padding: 8px 14px;
                 position: relative;
                 z-index: 99999;
             }
@@ -271,8 +285,14 @@ SIDEBAR
         p {
             margin: 0 auto;
             margin-top: -30px;
-            width: 70%;
+			padding: 0 54px;
         }
+		span {
+			color: $pink;
+			float: right;
+			font-weight: bold;
+			padding: 0 54px;
+		}
         .frame_top {
             margin-top: -40px;
         }
@@ -302,19 +322,22 @@ ABSTRACT SECTION
             vertical-align: middle;
             p {
                 color: #B92356;
-                font-size: 21px;
+                font-size: 18px;
             }
         }
     }
     aside {
-        height: 500px;
+		@include media($mobile) {
+			display: none;
+		}
+        height: 400px;
         &::before, &::after {
             background: url(images/frame.gif);
             background-repeat: no-repeat;
             background-size: 100%;
             content: "";
             position: absolute;
-            left: -65px;
+            left: -60px;
             width: 126%; height: 381px;
             z-index: 101;
         }

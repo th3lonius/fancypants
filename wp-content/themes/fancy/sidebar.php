@@ -8,6 +8,13 @@
 
 ?>
 
+<?php 
+
+	if ( is_page('events') ) {
+	
+	
+	} else { ?>
+
 <div class="module">
     
     <h3>Fancy News &amp; Events</h3>
@@ -21,6 +28,11 @@
     <?php endwhile; ?>
     
 </div>
+
+<?php
+
+}
+?>
 
 
 <?php
@@ -38,15 +50,34 @@
     <img class="frame_top" src="<?php echo get_template_directory_uri(); ?>/images/frame_top.png" width="396px" />
     
 <?php 
-$post_id = 142; 
+$post_id = 140; 
 
-$rows = get_field('reviews', $post_id ); // get all the rows
-$rand_row = $rows[ array_rand( $rows ) ]; // get a random row
-$rand_row_body = $rand_row['body' ]; // get the sub field value 
+$rows = get_field('review', $post_id ); // get all the rows
+
+if($rows) {
+	
+	shuffle( $rows );
+	$i = 0;
+	
+	foreach($rows as $row){
+		
+		$body = $row['body'];
+		$name = $row['name'];
+		
+		?>
+		
+	<p><?php echo $body ?></p>
+	<span>- <?php echo $name ?></span>
+	
+	<?php
+	
+		if(++$i == 1) break;
+	
+	}
+}
+
  
 ?>
-    
-<p><?php echo $rand_row_body ?></p>
 
     
     <img class="frame_bottom" src="<?php echo get_template_directory_uri(); ?>/images/frame_bottom.png" width="396px" />
