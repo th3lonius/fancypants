@@ -66,7 +66,7 @@ if($rows) {
 		
 		?>
 		
-	<p><?php echo $body ?></p>
+	<p>"<?php echo $body ?>"</p>
 	<span>- <?php echo $name ?></span>
 	
 	<?php
@@ -79,7 +79,6 @@ if($rows) {
  
 ?>
 
-    
     <img class="frame_bottom" src="<?php echo get_template_directory_uri(); ?>/images/frame_bottom.png" width="396px" />
     
     <img class="frame_lookers" src="<?php echo get_template_directory_uri(); ?>/images/frame_lookers.png" width="396px" />

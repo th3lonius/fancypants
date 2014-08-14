@@ -24,6 +24,12 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
+ 
+function custom_excerpt_length( $length ) {
+	return 30;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 
 add_theme_support( 'post-thumbnails' ); 
 

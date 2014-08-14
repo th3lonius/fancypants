@@ -76,6 +76,11 @@ section, footer {
 	max-width: 1000px;
 }
 
+.current {
+	background: $pink;
+	box-shadow: 0 0 0 5px $pink, 2px 1px 6px 4px rgba(10, 10, 0, 0.2);
+	top: 2px;
+}
 
 /*
 ==============================================
@@ -119,6 +124,7 @@ body > header {
             @include border-bottom-radius(999px);
             @include border-left-radius(999px);
             @include border-right-radius(999px);
+			color: #FFF;
             display: block;
             font-family: $display-bold;
             font-size: 18px;
@@ -152,10 +158,16 @@ nav {
             a {
                 @include btn-color(tint($pink, 15%));
                 border: 1px dashed rgba(255,255,255,0.4)!important;
+				color: #FFF;
                 display: block;
                 padding: 8px 14px;
                 position: relative;
                 z-index: 99999;
+				&:hover {
+					background: $pink;
+					box-shadow: 0 0 0 5px $pink, 2px 1px 6px 4px rgba(10, 10, 0, 0.2);
+					top: 2px;
+				}
             }
             div {
                 background-position: center;
@@ -528,6 +540,7 @@ footer {
             .btn {
                 @include btn-color($pink);
                 background: $pink;
+				color: #FFF;
                 font-size: 18px;
                 opacity: 0.9;
                 text-align: center;

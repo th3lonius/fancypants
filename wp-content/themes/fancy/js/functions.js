@@ -114,6 +114,19 @@ $(function(){
 		}
 	});
 });
+	
+	
+
+var str=location.href.toLowerCase();
+	
+$("nav ul li a").each(function() {
+if (str.indexOf(this.href.toLowerCase()) > -1) {
+ $("a.current").removeClass("current");
+$(this).addClass("current");
+}
+ });
+
+
     
     
 }); //end ready
