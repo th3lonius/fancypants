@@ -230,6 +230,7 @@ PAGES TEMPLATE
     main {
         @include outer-container;
         margin-bottom: 6em;
+        width: 58em;
         section {
             @include span-columns(8);
             background: #FFF;
@@ -237,7 +238,7 @@ PAGES TEMPLATE
             padding: golden-ratio(18px, 1);
             header {
                 @extend %clearfix;
-                margin-bottom: 4em;
+                margin-bottom: 3em;
                 img {
                     float: left;
                     width: 58%;
@@ -294,7 +295,7 @@ SIDEBAR
         margin-bottom: 1em;
     }
     .review_module {
-        background-image: url(images/frame_repeat.png);
+        background-image: url(images/frame_repeat_low.png);
         background-position: center 150px;
         background-repeat: repeat-y;
         position: relative;
@@ -526,7 +527,6 @@ FOOTER
 */
 footer {
     background: url(images/classy_fabric_black.png);
-    min-height: 300px;
     padding: 0;
     .stitching {
         padding: golden-ratio(18px, 3) 0;

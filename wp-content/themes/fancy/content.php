@@ -13,10 +13,8 @@
 <section id="content">
     <header>
         <h1><?php the_title(); ?></h1>
-        <time><?php the_date(); ?></time>
-        <?php the_content(); ?>
-        
     </header>
+    <?php the_content(); ?>
     
 </section>
 

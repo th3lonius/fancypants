@@ -19,7 +19,6 @@
                 while ( $new_query->have_posts() ) : $new_query->the_post(); ?>
         
                     <h3><?php the_title(); ?></h3>
-                    <time><?php echo get_the_date(); ?></time>
                     <?php the_content(); ?>
 
                 <?php endwhile; ?>

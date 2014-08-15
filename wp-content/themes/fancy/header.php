@@ -46,7 +46,7 @@
                 <nav>
                     <ul>
                         <li>
-                        	<a href="" class="stitched current">Home</a>
+                        	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="stitched current">Home</a>
                         </li>
                         <li>
                             <a href="<?php echo get_site_url(); ?>/author" class="stitched">Author</a>

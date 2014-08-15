@@ -22,7 +22,6 @@
     <?php while ( $new_query->have_posts() ) : $new_query->the_post(); ?>
 
         <a href="<?php the_permalink()?>"><?php the_title('<h4>','</h4>'); ?></a>
-        <time><?php echo get_the_date(); ?></time>
         <?php the_excerpt(); ?>
 
     <?php endwhile; ?>
