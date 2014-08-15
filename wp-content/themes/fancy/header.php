@@ -49,7 +49,7 @@
                         	<a href="" class="stitched current">Home</a>
                         </li>
                         <li>
-                            <a href="<?php echo get_site_url(); ?>/author" class="stitched">The Author</a>
+                            <a href="<?php echo get_site_url(); ?>/author" class="stitched">Author</a>
                             <div class="author"></div>
                         </li>
                         <li>

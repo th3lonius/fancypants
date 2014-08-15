@@ -56,8 +56,10 @@ $mobile: new-breakpoint(max-width 720px 12);
 GLOBALS
 ==============================================
 */
+body { overflow-x: hidden; }
+
 section, footer {
-    padding: golden-ratio(18px, 4);
+    padding: golden-ratio(18px, 2);
     .wrapper {
         @include outer-container;
         article {
@@ -74,6 +76,7 @@ section, footer {
 .wrapper {
 	padding: 0 30px;
 	max-width: 1000px;
+    min-width: 990px;
 }
 
 .current {
@@ -90,7 +93,6 @@ HEADER
 body > header {
     background: url(images/classy_fabric_pink.gif);
     width: 100%; height: 320px;
-	
     .wrapper {
         @include outer-container;
         padding: 40px 0;
@@ -104,9 +106,9 @@ body > header {
             height: 160px;
         }
         img {
-			@include media(max-width 1024px) {
+			@include media(max-width 1030px) {
 				@include span-columns(2);
-				right: 10px; bottom: -60px;
+				right: 10px; bottom: -30px;
 			}
             @include span-columns(3);
             position: absolute;
@@ -117,7 +119,7 @@ body > header {
         }
         .btn {
 			@include media(max-width 1024px) {
-				right: 220px;
+				right: 200px;
 			}
             @include btn-color($green);
             @include border-top-radius(999px);
@@ -127,13 +129,13 @@ body > header {
 			color: #FFF;
             display: block;
             font-family: $display-bold;
-            font-size: 18px;
-            padding: 14px 18px 18px;
+            font-size: 17px;
+            padding: 10px 18px 18px;
             position: absolute;
             top: 60px; right: 280px;
             text-align: center;
             text-transform: uppercase;
-            width: 124px; height: 124px;
+            width: 110px; height: 110px;
             &:hover {
                 @include btn-color(shade($green,5%));
             }
@@ -142,7 +144,9 @@ body > header {
 }
 
 nav {
-    @include span-columns(11);
+    @include media(max-width 1060px) {
+        margin-left: 3%;
+    }
     position: absolute;
     bottom: 40px; left: 0;
     ul {
@@ -150,7 +154,7 @@ nav {
         li {
             float: left;
             height: 100%;
-            margin-right: 2em;
+            margin-right: 1.75em;
             position: relative;
             &:last-child {
                 margin-right: 0;
@@ -160,6 +164,7 @@ nav {
                 border: 1px dashed rgba(255,255,255,0.4)!important;
 				color: #FFF;
                 display: block;
+                font-size: 15px;
                 padding: 8px 14px;
                 position: relative;
                 z-index: 99999;
@@ -211,7 +216,7 @@ PAGES TEMPLATE
 .page {
     background-color: #dbfffa;
     background-image: url(images/pinstripe.png);
-    padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
+    padding: golden-ratio(18px, 3) golden-ratio(18px, 2);
     .wrapper {
         min-width: 30em;
     }
@@ -326,15 +331,16 @@ ABSTRACT SECTION
 */
 .abstract {
     background-image: url(images/pinstripe.png);
-    padding: golden-ratio(18px, 5) golden-ratio(18px, 2);
+    padding: 8em 6em;
     .wrapper {
         article {
-            padding-top: 6em;
+            padding: 6em 0 0 3em;
             position: relative;
             vertical-align: middle;
+            width: 41%;
             p {
                 color: #B92356;
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }
@@ -349,13 +355,13 @@ ABSTRACT SECTION
             background-size: 100%;
             content: "";
             position: absolute;
-            left: -60px;
+            left: -50px;
             width: 126%; height: 381px;
             z-index: 101;
         }
-        &::before { top: -80px; }
+        &::before { top: -70px; }
         &::after {
-            bottom: -80px;
+            bottom: -70px;
             -moz-transform: scaleY(-1);
             -o-transform: scaleY(-1);
             -webkit-transform: scaleY(-1);
@@ -374,16 +380,16 @@ BUY THE BOOK SECTION
 .buythebook {
     background: url(images/classy_fabric_pink.gif);
     padding: 0;
-    & > * {
-        visibility: hidden;
-    }
     .stitching {
-        padding: golden-ratio(18px, 4) golden-ratio(18px, 2);
+        & > * {
+            visibility: hidden;
+        }
+        padding: golden-ratio(18px, 4) 10px;
         article p { color: #FFF; }
         aside {
             text-align: center;
             img {
-                margin-bottom: golden-ratio(18px, 2);
+                margin-bottom: 4em;
             }
         }
     }
@@ -392,9 +398,10 @@ BUY THE BOOK SECTION
 a.btn {
     @include btn-color($green);
     background: $green;
+    color: #FFF;
     display: inline;
     font-family: $display-bold;
-    font-size: golden-ratio(14px, 1);
+    font-size: 18px;
     margin: 0 auto;
     padding: golden-ratio(12px, 1) golden-ratio(14px, 1);
     text-transform: uppercase;

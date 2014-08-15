@@ -64,7 +64,7 @@ function hasScrolled() {
     
     /*SCROLLING ANIMATION*/
 	$(window).scroll(function() {
-		$('.buythebook > *').each(function(){
+		$('.buythebook .stitching > *').each(function(){
 		var imagePos = $(this).offset().top;
 
 		var topOfWindow = $(window).scrollTop();
