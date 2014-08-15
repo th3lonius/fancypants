@@ -101,7 +101,7 @@ body > header {
             background: url(images/masthead.svg);
             background-repeat: no-repeat;
             background-size: contain;
-            height: 250px;
+            height: 160px;
         }
         img {
 			@include media(max-width 1024px) {
