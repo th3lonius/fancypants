@@ -4,6 +4,8 @@
         
         <h2>Fancy News &amp; Events</h2>
         
+            <img src="<?php echo get_template_directory_uri(); ?>/images/sewingnews.png"/>
+        
         <article>
             
                 <?php
@@ -18,9 +20,10 @@
 
                 <?php
                     // Start the Loop.
-                    while ( $new_query->have_posts() ) : $new_query->the_post();
-                        the_title('<h3>','</h3>');
-                        the_date('','<time>','</time>');
+                    while ( $new_query->have_posts() ) : $new_query->the_post(); ?>
+                        <a href="<?php the_permalink()?>"><?php the_title('<h3>','</h3>');?></a>
+            
+                        <?php
                         the_content();
 
                         // If comments are open or we have at least one comment, load up the comment template.
@@ -31,11 +34,7 @@
                 ?>
         
         </article>
-        
-        <aside>
-            <img src="<?php echo get_template_directory_uri(); ?>/images/sewingnews.png"/>
-        </aside>
-    
+            
     </div>
 
 </section>

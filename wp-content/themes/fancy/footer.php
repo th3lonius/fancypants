@@ -22,7 +22,7 @@
             </div>
     
             <div class="contact">
-                <a href="mailto:debbie@lordfancypants.com" class="stitched btn">Contact the Author</a>
+                <a href="<?php echo get_site_url(); ?>/contact" class="btn">Contact the Author</a>
             </div>
             
         </div>

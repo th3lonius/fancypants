@@ -18,6 +18,22 @@ $mobile: new-breakpoint(max-width 720px 12);
 @import 'type';
 @import 'animations';
 
+/*BREAKPOINTS*/
+$break-small: 800px;
+$break-large: 1280px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screen {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screen {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
 @mixin btn-color($color){
     background: $color;
     box-shadow: 0 0 0 5px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
@@ -56,17 +72,25 @@ $mobile: new-breakpoint(max-width 720px 12);
 GLOBALS
 ==============================================
 */
-body { overflow-x: hidden; }
+body {
+    -webkit-overflow-scrolling: touch;
+}
 
 section, footer {
-    padding: golden-ratio(18px, 2);
     .wrapper {
         @include outer-container;
         article {
+            @include respond-to(mobile) {
+                float: none;
+            }
             @extend %clearfix;
             @include span-columns(6);
+            float: right;
         }
         aside, header {
+            @include respond-to(mobile) {
+                float: none;
+            }
             @include span-columns(6);
             position: relative;
         }
@@ -74,9 +98,13 @@ section, footer {
 }
 
 .wrapper {
-	padding: 0 30px;
-	max-width: 1000px;
-    min-width: 990px;
+	padding: 100px 60px;
+    position: relative;
+    width: 1024px;
+    @include respond-to(mobile) {
+        padding: 80px 30px;
+        width: 100%;
+    }
 }
 
 .current {
@@ -91,26 +119,43 @@ HEADER
 ==============================================
 */
 body > header {
-    background: url(images/classy_fabric_pink.gif);
+    @include respond-to(mobile) {
+        height: auto;
+    }
+    background: url(images/classy_fabric_pink.gif) repeat fixed;
+    background-attachment: scroll;
+    position: relative;
+    min-width: 100%;
     width: 100%; height: 320px;
+    z-index: 1;
     .wrapper {
         @include outer-container;
         padding: 40px 0;
         position: relative;
         height: 100%;
-        h1 {
-            @include span-columns(7);
-            background: url(images/masthead.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 160px;
+        & > a {
+            display: block;
+            h1 {
+                @include respond-to(mobile) {
+                    height: 110px;
+                    width: 100%!important;
+                }
+                @include span-columns(7);
+                background: url(images/masthead.svg);
+                background-repeat: no-repeat;
+                background-size: cover;
+                float: none;
+                height: 160px;
+            }
         }
         img {
 			@include media(max-width 1030px) {
 				@include span-columns(2);
 				right: 10px; bottom: -30px;
 			}
+            @include respond-to(mobile) { display: none; }
             @include span-columns(3);
+            float: none;
             position: absolute;
             right: -20px; bottom: -80px;
             height: auto;
@@ -118,6 +163,7 @@ body > header {
             visibility: hidden;
         }
         .btn {
+            @include respond-to(mobile) { display: none; }
 			@include media(max-width 1024px) {
 				right: 200px;
 			}
@@ -144,14 +190,29 @@ body > header {
 }
 
 nav {
-    @include media(max-width 1060px) {
-        margin-left: 3%;
+    @include respond-to(mobile) {
+        background: lightblue;
+        position: fixed;
+        top: 0; bottom: 0; left: -100%; right: 0;
+        width: 100%; height: 100%;
+        z-index: 999999;
     }
     position: absolute;
     bottom: 40px; left: 0;
     ul {
+        @include respond-to(mobile) {
+            padding: 100px 60px;
+        }
+        @extend %clearfix;
         height: 100%;
         li {
+            @extend %clearfix;
+            @include respond-to(mobile) {
+                float: none;
+                height: 60px;
+                margin-right: 0;
+                position: relative;
+            }
             float: left;
             height: 100%;
             margin-right: 1.75em;
@@ -160,14 +221,22 @@ nav {
                 margin-right: 0;
             }
             a {
-                @include btn-color(tint($pink, 15%));
-                border: 1px dashed rgba(255,255,255,0.4)!important;
-				color: #FFF;
-                display: block;
-                font-size: 15px;
-                padding: 8px 14px;
-                position: relative;
-                z-index: 99999;
+                @include respond-to(mobile) {
+                    border: 0px!important;
+                    color: #FFF;
+                    float: left;
+                    font-size: 24px;
+                }
+                @include respond-to(medium-screen) {
+                    @include btn-color(tint($pink, 15%));
+                    border: 1px dashed rgba(255,255,255,0.4)!important;
+                    color: #FFF;
+                    display: block;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                    position: relative;
+                    z-index: 99999;
+                }
 				&:hover {
 					background: $pink;
 					box-shadow: 0 0 0 5px $pink, 2px 1px 6px 4px rgba(10, 10, 0, 0.2);
@@ -175,13 +244,19 @@ nav {
 				}
             }
             div {
+                @include respond-to(mobile) {
+                    float: left;
+                    height: 95%;
+                    top: 0; right: auto;
+                    visibility: visible!important;
+                }
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: absolute;
                 top: 50px; right: 0;
                 visibility: hidden;
-                width: 100%; min-height: 95px;
+                width: 100%;
                 z-index: 999;
             }
             .author {
@@ -197,7 +272,10 @@ nav {
                 background-image: url(images/navlancelot.png);
             }            
             .merchandise {
-                color: #FFF;
+                background: #FFF;
+                color: $pink;
+                min-height: 0;
+                padding: 14px 6px;
                 text-align: center;
                 top: 70px;
             }            
@@ -218,7 +296,7 @@ PAGES TEMPLATE
     background-image: url(images/pinstripe.png);
     padding: golden-ratio(18px, 3) golden-ratio(18px, 2);
     .wrapper {
-        min-width: 30em;
+
     }
     h1 {
         background-position: left;
@@ -228,10 +306,17 @@ PAGES TEMPLATE
         font-size: golden-ratio(18px, 1);
     }
     main {
+        @include respond-to(mobile) {
+            width: 100%;
+        }
         @include outer-container;
         margin-bottom: 6em;
         width: 58em;
         section {
+            @include respond-to(mobile) {
+                margin-bottom: 2em;
+                width: 100%;
+            }
             @include span-columns(8);
             background: #FFF;
             box-shadow: 2px 2px 5px rgba(10,10,10,0.2);
@@ -243,32 +328,12 @@ PAGES TEMPLATE
                     float: left;
                     width: 58%;
                 }
-                .framed {
-                    position: relative;
-                    &::before, &::after {
-                        background: url(images/frame.gif);
-                        background-repeat: no-repeat;
-                        background-size: 100%;
-                        content: "";
-                        position: absolute;
-                        left: -65px;
-                        width: 126%; height: 381px;
-                        z-index: 101;
-                    }
-                    &::before { top: -80px; }
-                    &::after {
-                        bottom: -80px;
-                        -moz-transform: scaleY(-1);
-                        -o-transform: scaleY(-1);
-                        -webkit-transform: scaleY(-1);
-                        transform: scaleY(-1);
-                        filter: FlipH;
-                        -ms-filter: "FlipH";
-                    }
-                }
             }
         }
         aside {
+            @include respond-to(mobile) {
+                width: 100%;
+            }
             @include span-columns(4);
             div.module {
                 background: #FFF;
@@ -295,12 +360,21 @@ SIDEBAR
         margin-bottom: 1em;
     }
     .review_module {
+        @include respond-to(mobile) {
+            background: #FFF;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 2em;
+            padding: golden-ratio(18px, 1);
+        }
         background-image: url(images/frame_repeat_low.png);
         background-position: center 150px;
         background-repeat: repeat-y;
         position: relative;
         width: 100%;
         p {
+            @include respond-to(mobile) {
+                margin: 0; padding: 0;
+            }
             margin: 0 auto;
             margin-top: -30px;
 			padding: 0 54px;
@@ -312,12 +386,15 @@ SIDEBAR
 			padding: 0 54px;
 		}
         .frame_top {
+            @include respond-to(mobile) { display: none; }
             margin-top: -40px;
         }
         .frame_bottom {
+            @include respond-to(mobile) { display: none; }
             margin-bottom: -40px;
         }
         .frame_lookers {
+            @include respond-to(mobile) { display: none; }
             bottom: -204px; left: 0;
             position: absolute;
             z-index: 999999;
@@ -332,10 +409,18 @@ ABSTRACT SECTION
 */
 .abstract {
     background-image: url(images/pinstripe.png);
-    padding: 8em 6em;
+    @include respond-to(mobile) {
+        height: 220px;
+    }
+    & > * {
+        @include respond-to(mobile) {
+            display: none;
+        }
+    }
     .wrapper {
+        padding: 110px 70px;
         article {
-            padding: 6em 0 0 3em;
+            padding: 6em 0 0 1em;
             position: relative;
             vertical-align: middle;
             width: 41%;
@@ -357,7 +442,7 @@ ABSTRACT SECTION
             content: "";
             position: absolute;
             left: -50px;
-            width: 126%; height: 381px;
+            width: 123%; height: 381px;
             z-index: 101;
         }
         &::before { top: -70px; }
@@ -380,14 +465,32 @@ BUY THE BOOK SECTION
 */
 .buythebook {
     background: url(images/classy_fabric_pink.gif);
-    padding: 0;
     .stitching {
         & > * {
+            top: -280px;
             visibility: hidden;
+            @include respond-to(mobile) { visibility: visible; }
         }
-        padding: golden-ratio(18px, 4) 10px;
-        article p { color: #FFF; }
+        article {
+            @include respond-to(mobile) {
+                width: 100%;
+            }
+            
+            p {
+                @include respond-to(mobile) {
+                    font-size: 14px;
+                }
+                color: #FFF;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
         aside {
+            @include respond-to(mobile) {
+                margin-bottom: 3em;
+                width: 100%;
+            }
             text-align: center;
             img {
                 margin-bottom: 4em;
@@ -400,7 +503,6 @@ a.btn {
     @include btn-color($green);
     background: $green;
     color: #FFF;
-    display: inline;
     font-family: $display-bold;
     font-size: 18px;
     margin: 0 auto;
@@ -418,15 +520,21 @@ NEWS SECTION
 */
 .news {
     background: url(images/pinstripe.png);
-    aside {
-        height: 100%;
-        min-height: 400px;
-        position: relative;
-        img {
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 100%;
+    overflow: hidden;
+    position: relative;
+    article {
+        @include respond-to(mobile) {
+            float: none!important;
+            width: 100%!important;
         }
+        float: left!important;
+        position: relative;
+    }
+    img {
+        @include respond-to(mobile) { display: none; }
+        position: absolute;
+        bottom: -20px; right: 0;
+        width: 420px;
     }
 }
 
@@ -459,6 +567,9 @@ KID'S FUN PAGE
     .grid_thumb {
         @extend %clearfix;
         li {
+            @include respond-to(mobile) {
+                width: 50%;
+            }
             float: left;
             padding: 8px;
             width: 33.33333333%;
@@ -514,7 +625,6 @@ EVENTS PAGE
 .events {
     h1 {
         background-image: url(images/events_heading.png);
-        background-size: 75%;
         text-indent: -9999px;
         width: 100%; min-height: 140px;
     }
@@ -547,8 +657,6 @@ footer {
             margin: 55px 0;
             text-align: center;
             .btn {
-                @include btn-color($pink);
-                background: $pink;
 				color: #FFF;
                 font-size: 18px;
                 opacity: 0.9;
