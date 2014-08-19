@@ -329,8 +329,8 @@ slideExpandUp
 	animation-name: slideExpandUp;
 	-webkit-animation-name: slideExpandUp;	
 
-	animation-duration: 1.6s;	
-	-webkit-animation-duration: 1.6s;
+	animation-duration: 1s;	
+	-webkit-animation-duration: 1s;
 
 	animation-timing-function: ease-out;	
 	-webkit-animation-timing-function: ease -out;
@@ -575,8 +575,7 @@ bigEntrance
 
 	animation-timing-function: ease-out;	
 	-webkit-animation-timing-function: ease-out;	
-
-	visibility: visible !important;			
+	
 }
 
 @keyframes bigEntrance {
@@ -876,8 +875,8 @@ tossing
 	animation-name: tossing;
 	-webkit-animation-name: tossing;	
 
-	animation-duration: 2.5s;	
-	-webkit-animation-duration: 2.5s;
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
 
 	animation-iteration-count: infinite;
 	-webkit-animation-iteration-count: infinite;
@@ -885,25 +884,25 @@ tossing
 
 @keyframes tossing {
 	0% {
-		transform: rotate(-4deg);	
+		transform: rotate(-6deg);	
 	}
 	50% {
-		transform: rotate(4deg);
+		transform: rotate(6deg);
 	}
 	100% {
-		transform: rotate(-4deg);	
+		transform: rotate(-6deg);	
 	}						
 }
 
 @-webkit-keyframes tossing {
 	0% {
-		-webkit-transform: rotate(-4deg);	
+		-webkit-transform: rotate(-6deg);	
 	}
 	50% {
-		-webkit-transform: rotate(4deg);
+		-webkit-transform: rotate(6deg);
 	}
 	100% {
-		-webkit-transform: rotate(-4deg);	
+		-webkit-transform: rotate(-6deg);	
 	}				
 }
 

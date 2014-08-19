@@ -14,30 +14,10 @@ $mobile: new-breakpoint(max-width 720px 12);
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 @import 'reset';
+@import 'mixins';
 @import 'superslides';
 @import 'type';
 @import 'animations';
-
-/*BREAKPOINTS*/
-$break-small: 800px;
-$break-large: 1280px;
-
-@mixin respond-to($media) {
-  @if $media == mobile {
-    @media only screen and (max-width: $break-small) { @content; }
-  }
-  @else if $media == medium-screen {
-    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
-  }
-  @else if $media == wide-screen {
-    @media only screen and (min-width: $break-large) { @content; }
-  }
-}
-
-@mixin btn-color($color){
-    background: $color;
-    box-shadow: 0 0 0 5px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
-}
 
 .stitching {
     box-shadow: 0 2px 4px rgba(10,10,10,0.3);
@@ -49,7 +29,7 @@ $break-large: 1280px;
         position: absolute;
         left: 0;
         width: 100%; height: 2px;
-        z-index: 100;
+        z-index: 1;
     }
     &::before { top: 18px; }
     &::after { bottom: 18px; }
@@ -72,7 +52,9 @@ $break-large: 1280px;
 GLOBALS
 ==============================================
 */
-body {
+body, html {
+    overflow-x: hidden;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -108,6 +90,12 @@ section, footer {
 }
 
 .current {
+    @include respond-to(mobile) {
+        background: transparent;
+        box-shadow: none;
+        color: rgba(255,255,255,1.0);
+        top: auto;
+    }
 	background: $pink;
 	box-shadow: 0 0 0 5px $pink, 2px 1px 6px 4px rgba(10, 10, 0, 0.2);
 	top: 2px;
@@ -118,9 +106,12 @@ section, footer {
 HEADER
 ==============================================
 */
+.ie body > header h1 { background: #FFFFFF url('/images/masthead.png') no-repeat 0 0; }
+
 body > header {
     @include respond-to(mobile) {
         height: auto;
+        background: $pink;
     }
     background: url(images/classy_fabric_pink.gif) repeat fixed;
     background-attachment: scroll;
@@ -128,62 +119,78 @@ body > header {
     min-width: 100%;
     width: 100%; height: 320px;
     z-index: 1;
-    .wrapper {
-        @include outer-container;
-        padding: 40px 0;
-        position: relative;
-        height: 100%;
-        & > a {
-            display: block;
-            h1 {
+    .stitching {
+        @include respond-to(mobile) { visibility: hidden; }
+        & > * { @include respond-to(mobile) { visibility: visible; } }
+        .wrapper {
+            @include outer-container;
+            position: relative;
+            height: 100%;
+            .menu-link {
+                display: none;
                 @include respond-to(mobile) {
-                    height: 110px;
-                    width: 100%!important;
+                    color: #FFF;
+                    display: block;
+                    position: absolute;
+                    top: 44%; right: 20px;
+                    text-transform: uppercase;
+                    z-index: 999999;
                 }
+            }
+            .masthead {
+                display: block;
                 @include span-columns(7);
-                background: url(images/masthead.svg);
-                background-repeat: no-repeat;
-                background-size: cover;
                 float: none;
                 height: 160px;
+                position: absolute;
+                top: 40px; left: 0;
+                @include respond-to(mobile) {
+                    height: 110px;
+                    left: 10px;
+                    width: 70%;
+                }
+                img {
+                    width: 100%;
+                    
+                }
             }
-        }
-        img {
-			@include media(max-width 1030px) {
-				@include span-columns(2);
-				right: 10px; bottom: -30px;
-			}
-            @include respond-to(mobile) { display: none; }
-            @include span-columns(3);
-            float: none;
-            position: absolute;
-            right: -20px; bottom: -80px;
-            height: auto;
-            z-index: 99999;
-            visibility: hidden;
-        }
-        .btn {
-            @include respond-to(mobile) { display: none; }
-			@include media(max-width 1024px) {
-				right: 200px;
-			}
-            @include btn-color($green);
-            @include border-top-radius(999px);
-            @include border-bottom-radius(999px);
-            @include border-left-radius(999px);
-            @include border-right-radius(999px);
-			color: #FFF;
-            display: block;
-            font-family: $display-bold;
-            font-size: 17px;
-            padding: 10px 18px 18px;
-            position: absolute;
-            top: 60px; right: 280px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 110px; height: 110px;
-            &:hover {
-                @include btn-color(shade($green,5%));
+            .book-closed {
+                @include media(max-width 1030px) {
+                    @include span-columns(2);
+                    right: 10px; bottom: -30px;
+                }
+                @include respond-to(mobile) { display: none; }
+                @include span-columns(3);
+                float: none;
+                position: absolute;
+                right: -20px; bottom: -80px;
+                height: auto;
+                z-index: 99999;
+                visibility: hidden;
+            }
+            .btn {
+                @include respond-to(mobile) { display: none; }
+                @include media(max-width 1024px) {
+                    right: 200px;
+                }
+                @include btn-color($green);
+                @include border-top-radius(999px);
+                @include border-bottom-radius(999px);
+                @include border-left-radius(999px);
+                @include border-right-radius(999px);
+                color: #FFF;
+                display: block;
+                font-size: 17px;
+                font-weight: bold;
+                padding: 10px 18px 18px;
+                position: absolute;
+                top: 60px; right: 280px;
+                text-align: center;
+                text-transform: uppercase;
+                width: 110px; height: 110px;
+                &:hover {
+                    @include btn-color(shade($green,5%));
+                }
             }
         }
     }
@@ -195,21 +202,22 @@ nav {
         position: fixed;
         top: 0; bottom: 0; left: -100%; right: 0;
         width: 100%; height: 100%;
-        z-index: 999999;
+        z-index: 9999;
     }
     position: absolute;
     bottom: 40px; left: 0;
     ul {
         @include respond-to(mobile) {
             padding: 100px 60px;
+            position: absolute;
+            right: 25px;
         }
         @extend %clearfix;
         height: 100%;
         li {
-            @extend %clearfix;
             @include respond-to(mobile) {
                 float: none;
-                height: 60px;
+                height: auto;
                 margin-right: 0;
                 position: relative;
             }
@@ -223,9 +231,12 @@ nav {
             a {
                 @include respond-to(mobile) {
                     border: 0px!important;
-                    color: #FFF;
-                    float: left;
+                    color: rgba(255,255,255,0.55);
+                    display: block;
                     font-size: 24px;
+                    height: 70px;
+                    line-height: 70px!important;
+                    text-shadow: none!important;
                 }
                 @include respond-to(medium-screen) {
                     @include btn-color(tint($pink, 15%));
@@ -238,6 +249,12 @@ nav {
                     z-index: 99999;
                 }
 				&:hover {
+                    @include respond-to(mobile) {
+                        background: transparent;
+                        box-shadow: none;
+                        color: rgba(255,255,255,1.0);
+                        top: auto;
+                    }
 					background: $pink;
 					box-shadow: 0 0 0 5px $pink, 2px 1px 6px 4px rgba(10, 10, 0, 0.2);
 					top: 2px;
@@ -245,10 +262,10 @@ nav {
             }
             div {
                 @include respond-to(mobile) {
-                    float: left;
-                    height: 95%;
-                    top: 0; right: auto;
+                    height: 100%;
+                    top: 0!important; right: auto; left: -92px;
                     visibility: visible!important;
+                    width: 70px;
                 }
                 background-position: center;
                 background-repeat: no-repeat;
@@ -256,7 +273,7 @@ nav {
                 position: absolute;
                 top: 50px; right: 0;
                 visibility: hidden;
-                width: 100%;
+                width: 100%; height: 80px;
                 z-index: 999;
             }
             .author {
@@ -274,14 +291,14 @@ nav {
             .merchandise {
                 background: #FFF;
                 color: $pink;
-                min-height: 0;
+                height: auto;
                 padding: 14px 6px;
                 text-align: center;
                 top: 70px;
             }            
             .contact {
                 background-image: url(images/navspool.png);
-            }            
+            }
         }
     }
 }
@@ -410,7 +427,7 @@ ABSTRACT SECTION
 .abstract {
     background-image: url(images/pinstripe.png);
     @include respond-to(mobile) {
-        height: 220px;
+        
     }
     & > * {
         @include respond-to(mobile) {
@@ -466,10 +483,12 @@ BUY THE BOOK SECTION
 .buythebook {
     background: url(images/classy_fabric_pink.gif);
     .stitching {
+        @include respond-to(mobile) { visibility: hidden; }
         & > * {
-            top: -280px;
             visibility: hidden;
-            @include respond-to(mobile) { visibility: visible; }
+            @include respond-to(mobile) {
+                visibility: visible;
+            }
         }
         article {
             @include respond-to(mobile) {
@@ -494,6 +513,7 @@ BUY THE BOOK SECTION
             text-align: center;
             img {
                 margin-bottom: 4em;
+                z-index: 99999;
             }
         }
     }
@@ -503,8 +523,8 @@ a.btn {
     @include btn-color($green);
     background: $green;
     color: #FFF;
-    font-family: $display-bold;
     font-size: 18px;
+    font-weight: bold;
     margin: 0 auto;
     padding: golden-ratio(12px, 1) golden-ratio(14px, 1);
     text-transform: uppercase;
@@ -639,8 +659,9 @@ footer {
     background: url(images/classy_fabric_black.png);
     padding: 0;
     .stitching {
-        padding: golden-ratio(18px, 3) 0;
+
         .main {
+            @include respond-to(mobile) { width: 35%; }
             @extend %clearfix;
             @include span-columns(7);
             vertical-align: bottom;
@@ -653,10 +674,17 @@ footer {
             }
         }
         .contact {
+            @include respond-to(mobile) {
+                float: right;
+                margin: 0;
+                margin-top: 20px;
+                width: 60%;
+            }
             @include span-columns(5);
             margin: 55px 0;
             text-align: center;
             .btn {
+                @include respond-to(mobile) { font-size: 16px; }
 				color: #FFF;
                 font-size: 18px;
                 opacity: 0.9;
@@ -669,12 +697,16 @@ footer {
         }
     }
     .mastfoot {
+        @include respond-to(mobile) { display: none; }
         display: inline-block;
         margin-right: 20px;
         vertical-align: middle;
         width: 84%;
     }
     .facebook {
+        @include respond-to(mobile) {
+            width: 62px; height: 62px;
+        }
         display: inline-block;
         vertical-align: middle;
         width: 50px; height: 50px;

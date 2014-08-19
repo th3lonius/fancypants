@@ -15,7 +15,7 @@
             
             <div class="main">
         
-                <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/masthead.svg"/>
+                <img class="mastfoot" src="<?php echo get_template_directory_uri(); ?>/images/masthead.png"/>
 
                 <a href="https://www.facebook.com/lordfancypantsbooks"><img class="facebook" src="<?php echo get_template_directory_uri(); ?>/images/facebook.png"/></a>
                 

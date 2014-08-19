@@ -1,0 +1,20 @@
+/*BREAKPOINTS*/
+$break-small: 800px;
+$break-large: 1280px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screen {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screen {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+@mixin btn-color($color){
+    background: $color;
+    box-shadow: 0 0 0 5px $color, 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+}

@@ -20,12 +20,12 @@
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
@@ -41,7 +41,10 @@
         <div class="stitching">
 
             <div class="wrapper">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><h1></h1></a>
+                <a class="masthead" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/masthead.png"/>
+                </a>
+                <a class="menu-link" href="#">Menu</a>
                 <nav>
                     <ul>
                         <li>
@@ -74,7 +77,7 @@
                     </ul>
                 </nav>
                 <a href="http://www.amazon.com/Lord-Fancy-Pants-Debbie-Pakzaban/dp/1493713736" class="stitched btn">Get Your Copy Today!</a>
-                <img class="slideDown" src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
+                <img class="slideDown book-closed" src="<?php echo get_template_directory_uri(); ?>/images/book_closed.png"/>
             </div>
             
         </div>
