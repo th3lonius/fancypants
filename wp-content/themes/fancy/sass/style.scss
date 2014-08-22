@@ -47,15 +47,18 @@ $mobile: new-breakpoint(max-width 720px 12);
     font-weight: normal;
 }
 
+.btn { display: inline-block; }
+
 /*
 ==============================================
 GLOBALS
 ==============================================
 */
-body, html {
-    overflow-x: hidden;
+body, html { overflow: hidden; }
+
+body {
     overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: none!important;
 }
 
 section, footer {
@@ -101,13 +104,16 @@ section, footer {
 	top: 2px;
 }
 
+.iosfix {
+  height: 101%;
+  overflow: hidden;
+}
+
 /*
 ==============================================
 HEADER
 ==============================================
 */
-.ie body > header h1 { background: #FFFFFF url('/images/masthead.png') no-repeat 0 0; }
-
 body > header {
     @include respond-to(mobile) {
         height: auto;
@@ -129,8 +135,11 @@ body > header {
             .menu-link {
                 display: none;
                 @include respond-to(mobile) {
-                    color: #FFF;
+                    background: rgba(255,255,255,0.6);
+                    color: $pink;
                     display: block;
+                    font-weight: bold;
+                    padding: 12px;
                     position: absolute;
                     top: 44%; right: 20px;
                     text-transform: uppercase;
@@ -147,7 +156,7 @@ body > header {
                 @include respond-to(mobile) {
                     height: 110px;
                     left: 10px;
-                    width: 70%;
+                    width: 320px;
                 }
                 img {
                     width: 100%;
@@ -196,12 +205,18 @@ body > header {
     }
 }
 
+.ie8 nav ul li a {
+    color: #FFF!important;
+    padding: 12px;
+}
+
 nav {
     @include respond-to(mobile) {
         background: lightblue;
+        position: sticky;
         position: fixed;
-        top: 0; bottom: 0; left: -100%; right: 0;
-        width: 100%; height: 100%;
+        top: -100%; bottom: 0; left: 0; right: 0;
+        width: 100%; height: 100vh;
         z-index: 9999;
     }
     position: absolute;
@@ -311,7 +326,10 @@ PAGES TEMPLATE
 .page {
     background-color: #dbfffa;
     background-image: url(images/pinstripe.png);
-    padding: golden-ratio(18px, 3) golden-ratio(18px, 2);
+    padding: golden-ratio(18px, 3) 0;
+    @include respond-to(mobile) {
+        padding: 0;
+    }
     .wrapper {
 
     }
@@ -321,6 +339,17 @@ PAGES TEMPLATE
         background-size: contain;
         color: tint($pink, 15%);
         font-size: golden-ratio(18px, 1);
+        margin-bottom: 1em;
+        @include respond-to(mobile) {
+            background-position: center;
+            background-size: contain!important;
+        }
+    }
+    h3 {
+        @include respond-to(mobile) {
+            
+            text-align: center;
+        }
     }
     main {
         @include respond-to(mobile) {
@@ -331,6 +360,7 @@ PAGES TEMPLATE
         width: 58em;
         section {
             @include respond-to(mobile) {
+                float: none;
                 margin-bottom: 2em;
                 width: 100%;
             }
@@ -349,6 +379,7 @@ PAGES TEMPLATE
         }
         aside {
             @include respond-to(mobile) {
+                float: none;
                 width: 100%;
             }
             @include span-columns(4);
@@ -390,9 +421,10 @@ SIDEBAR
         width: 100%;
         p {
             @include respond-to(mobile) {
-                margin: 0; padding: 0;
+                font-size: 13px;
+                margin-top: 0; padding: 0;
             }
-            margin: 0 auto;
+            margin-bottom: 1em;
             margin-top: -30px;
 			padding: 0 54px;
         }
@@ -424,6 +456,15 @@ SIDEBAR
 ABSTRACT SECTION
 ==============================================
 */
+.ie8 aside {
+    
+    &::before, &::after {
+        background: #FFF!important;
+        width: 100%;
+    }
+    
+}
+
 .abstract {
     background-image: url(images/pinstripe.png);
     @include respond-to(mobile) {
@@ -483,7 +524,7 @@ BUY THE BOOK SECTION
 .buythebook {
     background: url(images/classy_fabric_pink.gif);
     .stitching {
-        @include respond-to(mobile) { visibility: hidden; }
+
         & > * {
             visibility: hidden;
             @include respond-to(mobile) {
@@ -563,13 +604,18 @@ NEWS SECTION
 AUTHOR PAGE
 ==============================================
 */
-.author {
-    h1 {
-        background-image: url(images/aboutauthor.png);
-        background-size: 90%;
-        float: left;
-        text-indent: -9999px;
-        width: 42%; height: 300px;
+.author h1 {
+    background-image: url(images/aboutauthor.png);
+    background-size: 90%;
+    float: left;
+    text-indent: -9999px;
+    width: 42%; height: 300px;
+}
+
+.author h1, .author img {
+    @include respond-to(mobile) {
+        float: none!important;
+        width: 100%!important;
     }
 }
 
@@ -578,33 +624,30 @@ AUTHOR PAGE
 KID'S FUN PAGE
 ==============================================
 */
-.kids-fun {
-    h1 {
-        background-image: url(images/kidsfun_heading.png);
-        text-indent: -9999px;
-        width: 100%; min-height: 140px;
-    }
-    .grid_thumb {
-        @extend %clearfix;
-        li {
-            @include respond-to(mobile) {
-                width: 50%;
-            }
-            float: left;
-            padding: 8px;
-            width: 33.33333333%;
-            a {
-                border: 2px dashed $green;
-                display: block;
-                overflow: hidden;
-                img {
-                    -webkit-transition: 0.2s all ease 0.05s;
-                    transition: 0.2s all ease 0.05s;
-                    padding: 8px;
-                    &:hover {
-                        -webkit-transform: scale(1.3);
-                        transform: scale(1.3);
-                    }
+.kids-fun h1 {
+    background-image: url(images/kidsfun_heading.png);
+    text-indent: -9999px;
+    width: 100%; min-height: 140px;
+}
+
+.grid_thumb {
+    @extend %clearfix;
+    li {
+        @include respond-to(mobile) { width: 50%; }
+        float: left;
+        padding: 8px;
+        width: 33.33333333%;
+        a {
+            border: 2px dashed $green;
+            display: block;
+            overflow: hidden;
+            img {
+                -webkit-transition: 0.2s all ease 0.05s;
+                transition: 0.2s all ease 0.05s;
+                padding: 8px;
+                &:hover {
+                    -webkit-transform: scale(1.3);
+                    transform: scale(1.3);
                 }
             }
         }
@@ -658,41 +701,41 @@ FOOTER
 footer {
     background: url(images/classy_fabric_black.png);
     padding: 0;
-    .stitching {
+    @include respond-to(mobile) {
 
-        .main {
-            @include respond-to(mobile) { width: 35%; }
-            @extend %clearfix;
-            @include span-columns(7);
-            vertical-align: bottom;
-            &::before {
-                content: "";
-                display: inline-block;
-                height: 100%;
-                vertical-align: middle;
-                margin-right: -0.25em;
-            }
+    }
+    .main {
+        @include respond-to(mobile) { width: 35%; }
+        @extend %clearfix;
+        @include span-columns(7);
+        vertical-align: bottom;
+        &::before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
         }
-        .contact {
-            @include respond-to(mobile) {
-                float: right;
-                margin: 0;
-                margin-top: 20px;
-                width: 60%;
-            }
-            @include span-columns(5);
-            margin: 55px 0;
+    }
+    .contact {
+        @include respond-to(mobile) {
+            float: right;
+            margin: 0;
+            margin-top: 20px;
+            width: 60%;
+        }
+        @include span-columns(5);
+        margin: 55px 0;
+        text-align: center;
+        .btn {
+            @include respond-to(mobile) { font-size: 16px; }
+            color: #FFF;
+            font-size: 18px;
+            opacity: 0.9;
             text-align: center;
-            .btn {
-                @include respond-to(mobile) { font-size: 16px; }
-				color: #FFF;
-                font-size: 18px;
-                opacity: 0.9;
-                text-align: center;
-                padding: 18px 14px;
-                &:hover {
-                    opacity: 1;
-                }
+            padding: 18px 14px;
+            &:hover {
+                opacity: 1;
             }
         }
     }

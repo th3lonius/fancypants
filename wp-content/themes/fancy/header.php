@@ -20,7 +20,8 @@
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1">
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -33,7 +34,7 @@
 <body>
 
     <header>
-        
+
         <div class="sparkle star-1"></div>
         <div class="sparkle star-2"></div>
         <div class="sparkle star-3"></div>

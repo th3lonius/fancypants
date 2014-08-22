@@ -1,6 +1,6 @@
 /*BREAKPOINTS*/
 $break-small: 800px;
-$break-large: 1280px;
+$break-large: 2000px;
 
 @mixin respond-to($media) {
   @if $media == mobile {
