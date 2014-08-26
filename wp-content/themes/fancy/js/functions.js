@@ -88,7 +88,7 @@ jQuery(document).ready(function ($) {
                 });
             });
 
-        } 
+        }
     }
 
     /*CONTACT FORM AJAX*/
