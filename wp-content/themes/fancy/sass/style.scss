@@ -135,20 +135,18 @@ body > header {
             .menu-link {
                 display: none;
                 @include respond-to(mobile) {
-                    background: #FFF;
-					border-radius: 4px;
-					box-shadow: 2px 1px 3px rgba(0,0,0,0.2);
-                    color: $pink;
+                    background: url(images/hamburger.svg);
+					background-size: 100%;
+					background-repeat: no-repeat;
                     display: block;
-                    font-weight: 100;
-                    padding: 24px;
                     position: absolute;
-                    top: 30%; right: 10px;
+                    top: 30px; right: 30px;
+					text-indent: -9999px;
                     text-transform: uppercase;
+					width: 40px; height: 40px;
                     z-index: 999999;
 					&:hover {
-						background: $pink;
-						color: #FFF;
+
 					}
                 }
             }
@@ -161,7 +159,7 @@ body > header {
                 top: 40px; left: 0;
                 @include respond-to(mobile) {
                     height: 110px;
-                    left: 12px;
+                    left: 16px;
                     width: 300px;
                 }
 				@include respond-to(mobile-landscape) {
@@ -188,7 +186,12 @@ body > header {
                 visibility: hidden;
             }
             .btn {
-                @include respond-to(mobile) { display: none; }
+                @include respond-to(mobile) {
+					right: 20px!important;
+					top: 90px;
+					-webkit-transform: scale(0.8);
+					transform: scale(0.8);
+				}
                 @include media(max-width 1024px) {
                     right: 200px;
                 }
@@ -794,7 +797,7 @@ CONTACT FORM
 		border-radius: 0;
 		line-height: 22px;
 		background-color: #fbfbfb;
-		padding: 13px 13px 13px 54px;
+		padding: 13px 13px 13px 18px;
 		margin-bottom: 10px;
 		width:100%;
 		-webkit-box-sizing: border-box;
@@ -808,7 +811,7 @@ CONTACT FORM
 			border: 3px solid hsla(162, 64%, 56%, 1);
 			color: #3498db;
 			outline: none;
-		  	padding: 13px 13px 13px 54px;
+		  	padding: 13px 13px 13px 18px;
 		}
 	}
 }
